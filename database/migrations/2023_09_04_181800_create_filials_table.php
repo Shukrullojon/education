@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('filials', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('name',150);
+            $table->string('address',150)->nullable();
+            $table->string('phone',15)->nullable();
             $table->tinyInteger('status');
             $table->timestamps();
         });

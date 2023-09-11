@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('filial_id');
             $table->tinyInteger('status');
             $table->timestamps();
-            $table->foreign('filial_id')->references('id')->on('filials');
+//            $table->foreign('filial_id')->references('id')->on('filials');
         });
     }
 

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('room_id');
             $table->string('time',5);
             $table->timestamps();
-            $table->foreign('level_id')->references('id')->on('levels');
-            $table->foreign('room_id')->references('id')->on('rooms');
+            /*$table->foreign('level_id')->references('id')->on('levels');
+            $table->foreign('room_id')->references('id')->on('rooms');*/
         });
     }
 
