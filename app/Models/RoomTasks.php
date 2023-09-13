@@ -6,21 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $room_id
- * @property int $room_task_id
+ * @property String $name
+ * @property String $room_id
+ * @property int $status
  * */
 
-class RoomTask extends Model
+class RoomTasks extends Model
 {
     use HasFactory;
 
-    protected $table = 'room_task';
+    protected $table = 'room_tasks';
 
     protected $fillable = [
-        'room_id',
-        'room_task_id',
+        'name',
+        'filial_id',
+        'status',
     ];
 
     public $timestamps = true;
+
 
 }

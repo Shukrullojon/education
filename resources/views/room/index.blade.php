@@ -29,7 +29,7 @@
             @foreach ($rooms as $key => $room)
                 <tr>
                     <td>{{ $room->name }}</td>
-                    <td>{{ $room->filial_id }}</td>
+                    <td>@if(!empty($room->filial->name)) {{ $room->filial->name }} @endif</td>
                     <td>{{ $room->status }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('room.show',$room->id) }}">Show</a>

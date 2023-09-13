@@ -25,5 +25,7 @@ class Room extends Model
 
     public $timestamps = true;
 
-
+    public function filial(){
+        return $this->belongsTo(Filial::class);
+    }
 }
