@@ -15,17 +15,17 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    {{ $room->name }}
+                    {{ $roomTasks->name }}
                 </div>
 
                 <div class="form-group">
                     <strong>Filial:</strong>
-                    @if($room->filial) {{ $room->filial->name }} @endif
+                    @if($roomTasks->filial) {{ $roomTasks->filial->name }} @endif
                 </div>
 
                 <div class="form-group">
                     <strong>Status:</strong>
-                    {{ $room->status }}
+                    {{ $roomTasks->status }}
                 </div>
             </div>
         </div>

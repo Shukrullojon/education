@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\FilialController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\RoomTaskController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +21,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('permissions',PermissionController::class);
     Route::resource('filial',FilialController::class);
     Route::resource('room',RoomController::class);
+    Route::resource('roomtask',RoomTaskController::class);
+    Route::resource('room-task',RoomTaskController::class);
+    Route::resource('task-room',RoomTaskController::class);
 });
 
 

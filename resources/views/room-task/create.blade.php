@@ -5,16 +5,16 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Edit Room</h2>
+                    <h2>Create New Room Task</h2>
                 </div>
             </div>
         </div>
     </div>
 
-
     <div class="card mb-12 mb-xl-12" id="kt_profile_details_view" style="margin: 10px; padding: 10px">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -24,7 +24,7 @@
         @endif
 
 
-        {!! Form::model($room, ['method' => 'PATCH','route' => ['room.update', $room->id]]) !!}
+        {!! Form::open(array('route' => 'task-room.store','method'=>'POST')) !!}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -46,7 +46,6 @@
                     {!! Form::select('status', [1 => 'Active', 0=>'No Active'],null, ['class' => 'form-control']) !!}
                 </div>
             </div>
-
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <br>
                 <button type="submit" class="btn btn-primary form-control">Submit</button>

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Edit Room</h2>
+                    <h2>Edit Room Task</h2>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
         @endif
 
 
-        {!! Form::model($room, ['method' => 'PATCH','route' => ['room.update', $room->id]]) !!}
+        {!! Form::model($roomTasks, ['method' => 'PATCH','route' => ['task-room.update', $roomTasks->id]]) !!}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">

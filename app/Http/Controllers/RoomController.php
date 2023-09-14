@@ -59,8 +59,10 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
+        $filials = Filial::where('status',1)->get()->pluck('name','id');
         return view('room.edit',[
             'room' => $room,
+            'filials' => $filials,
         ]);
     }
 
