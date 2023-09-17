@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Filial;
 use App\Models\Room;
+use App\Models\RoomTasks;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -25,8 +26,10 @@ class RoomController extends Controller
     public function create()
     {
         $filials = Filial::where('status',1)->get()->pluck('name','id');
+        $tasks = RoomTasks::where('status',1)->get();
         return view('room.create',[
             'filials' => $filials,
+            'tasks' => $tasks,
         ]);
     }
 
@@ -40,7 +43,9 @@ class RoomController extends Controller
             'filial_id' => 'required',
             'status' => 'required',
         ]);
-        Room::create($request->all());
+        $room = Room::create($request->all());
+        //$room->syncPermissions($request->input('tasks'));
+        $room->roomTask()->attach($request->input('tasks'));
         return redirect()->route('room.index')->with('success','Room created successfully');
     }
 
@@ -60,9 +65,11 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         $filials = Filial::where('status',1)->get()->pluck('name','id');
+        $tasks = RoomTasks::where('status',1)->get();
         return view('room.edit',[
             'room' => $room,
             'filials' => $filials,
+            'tasks' => $tasks,
         ]);
     }
 

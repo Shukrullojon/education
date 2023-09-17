@@ -28,4 +28,8 @@ class RoomTasks extends Model
     public function filial(){
         return $this->belongsTo(Filial::class);
     }
+
+    public function room(){
+        return $this->belongsToMany(Room::class);
+    }
 }

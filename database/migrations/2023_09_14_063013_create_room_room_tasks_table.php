@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('room_task', function (Blueprint $table) {
+        Schema::create('room_room_tasks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('room_id');
-            $table->unsignedBigInteger('room_task_id');
+            $table->unsignedBigInteger('room_tasks_id');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('room_task');
+        Schema::dropIfExists('room_room_tasks');
     }
 };

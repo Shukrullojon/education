@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Room;
-use App\Models\RoomTask;
+use App\Models\RoomRoomTask;
 use App\Models\RoomTasks;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class RoomTask_Seeder extends Seeder
@@ -16,9 +15,9 @@ class RoomTask_Seeder extends Seeder
     public function run(): void
     {
         for ($i = 0; $i < 10; $i++){
-            RoomTask::create([
+            RoomRoomTask::create([
                 'room_id' => Room::select('id')->inRandomOrder()->first()->id,
-                'room_task_id' => RoomTasks::select('id')->inRandomOrder()->first()->id,
+                'room_tasks_id' => RoomTasks::select('id')->inRandomOrder()->first()->id,
             ]);
         }
     }

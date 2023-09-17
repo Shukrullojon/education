@@ -46,6 +46,18 @@
                     {!! Form::select('status', [1 => 'Active', 0=>'No Active'],null, ['class' => 'form-control']) !!}
                 </div>
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Tasks:</strong>
+                    <br/>
+                    @foreach($tasks as $task)
+                        <label>{{ Form::checkbox('tasks[]', $task->id, false, array('class' => 'name')) }}
+                            {{ $task->name }}</label>
+                        <br/>
+                    @endforeach
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <br>
                 <button type="submit" class="btn btn-primary form-control">Submit</button>
