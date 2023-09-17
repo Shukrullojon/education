@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoomSeeder::class);
         $this->call(RoomTaskSeeder::class);
         $this->call(RoomTask_Seeder::class);
+        $this->call(CourceSeeder::class);
     }
 }
