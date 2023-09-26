@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('start_time');
             $table->unsignedBigInteger('cource_id');
             $table->unsignedBigInteger('filial_id');
+            $table->tinyInteger('max_student')->nullable();
             $table->tinyInteger('status')->default(1)->comment('1 -> new group, 2 -> open group, 3 -> close group');
             $table->timestamps();
         });
