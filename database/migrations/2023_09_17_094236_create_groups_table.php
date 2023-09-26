@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('level_id');
-            $table->unsignedBigInteger('room_id');
-            $table->string('time',5);
+            $table->tinyInteger('type')->default(0)->comment('1 -> every day, 2 - odd days, 3 - even days');
+            $table->timestamp('start_time');
+            $table->unsignedBigInteger('cource_id');
+            $table->unsignedBigInteger('filial_id');
+            $table->tinyInteger('status')->default(1)->comment('1 -> new group, 2 -> open group, 3 -> close group');
             $table->timestamps();
-            /*$table->foreign('level_id')->references('id')->on('levels');
-            $table->foreign('room_id')->references('id')->on('rooms');*/
         });
     }
 

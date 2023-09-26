@@ -9,6 +9,7 @@ use App\Http\Controllers\FilialController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomTaskController;
 use App\Http\Controllers\CourceController;
+use App\Http\Controllers\GroupController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +27,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('room-task',RoomTaskController::class);
     Route::resource('task-room',RoomTaskController::class);
     Route::resource('cource',CourceController::class);
+    Route::resource('group',GroupController::class);
 });
 
 

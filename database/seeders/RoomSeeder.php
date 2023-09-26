@@ -30,6 +30,41 @@ class RoomSeeder extends Seeder
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
                 'status' => 1,
             ],
+            [
+                'name' => '4-Room',
+                'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'status' => 1,
+            ],
+            [
+                'name' => '5-Room',
+                'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'status' => 1,
+            ],
+            [
+                'name' => '6-Room',
+                'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'status' => 1,
+            ],
+            [
+                'name' => '7-Room',
+                'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'status' => 1,
+            ],
+            [
+                'name' => '8-Room',
+                'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'status' => 1,
+            ],
+            [
+                'name' => '9-Room',
+                'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'status' => 1,
+            ],
+            [
+                'name' => '10-Room',
+                'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'status' => 1,
+            ],
         ];
 
         foreach ($data as $d){
