@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('group_room', function (Blueprint $table) {
+        Schema::create('group_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('group_id')->nullable();
-            $table->unsignedBigInteger('room_id')->nullable();
-            $table->time('begin_time')->default('00:00');
-            $table->time('end_time')->default('00:00');
+            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('room_id');
+            $table->unsignedBigInteger('teacher_id');
+            $table->time('begin_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('group_room');
+        Schema::dropIfExists('group_details');
     }
 };

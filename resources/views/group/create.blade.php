@@ -43,7 +43,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Type:</strong>
-                    {!! Form::select('status', [
+                    {!! Form::select('type', [
                         1 => 'Every Day',
                         2 => 'Odd Days',
                         3 => 'Even Days'
@@ -54,14 +54,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Max Student:</strong>
-                    {!! Form::text('max_student', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                    {!! Form::text('max_student', null, array('placeholder' => 'Max student','class' => 'form-control')) !!}
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Cource:</strong>
-                    {!! Form::select('filial_id', $cources,null, ['class' => 'form-control']) !!}
+                    {!! Form::select('cource_id', $cources,null, ['class' => 'form-control']) !!}
                 </div>
             </div>
 

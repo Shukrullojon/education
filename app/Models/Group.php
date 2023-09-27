@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Timestamp $start_time
  * @property Cource $cource_id
  * @property Filial $filial_id
+ * @property integer $max_student
  * */
 
 class Group extends Model
@@ -25,6 +26,7 @@ class Group extends Model
         'start_time',
         'cource_id',
         'filial_id',
+        'max_student',
     ];
 
     public function cource(){
@@ -35,12 +37,16 @@ class Group extends Model
         return $this->belongsTo(Filial::class);
     }
 
-    public function gr(){
-        return $this->hasMany(GroupRoom::class);
+    public function detail(){
+        return $this->hasMany(GroupDetail::class,'group_id','id');
+    }
+
+    public function room(){
+        return $this->hasMany(GroupDetail::class,'room_id','id');
     }
 
     public function teacher(){
-        return $this->hasMany(GroupTeacher::class);
+        return $this->hasMany(GroupDetail::class,'teacher_id','id');
     }
 
     public function student(){

@@ -22,6 +22,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '2-group',
@@ -29,6 +30,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '3-group',
@@ -36,6 +38,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '4-group',
@@ -43,6 +46,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '5-group',
@@ -50,6 +54,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '6-group',
@@ -57,6 +62,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '7-group',
@@ -64,6 +70,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '8-group',
@@ -71,6 +78,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '9-group',
@@ -78,6 +86,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
             [
                 'name' => '10-group',
@@ -85,6 +94,7 @@ class GroupSeeder extends Seeder
                 'start_time' => date('Y-m-d H:i:s', strtotime("+".rand(1,10).' days'),),
                 'cource_id' => Cource::select('id')->inRandomOrder()->first()->id,
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
+                'max_student' => 15,
             ],
         ];
         foreach ($data as $d){

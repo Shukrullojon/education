@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cource;
 use App\Models\Filial;
 use App\Models\Group;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -27,7 +28,6 @@ class GroupController extends Controller
     {
         $cources = Cource::where('status',1)->latest()->get()->pluck('name','id');
         $filials = Filial::where('status',1)->latest()->get()->pluck('name','id');
-
         return view('group.create',[
             'cources' => $cources,
             'filials' => $filials,
@@ -39,16 +39,35 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'filial_id' => 'required',
+            'cource_id' => 'required',
+            'status' => 'required',
+            'type' => 'required',
+        ]);
+        $group = Group::create([
+            'name' => $request->name,
+            'type' => $request->type,
+            'start_time' => $request->start_time,
+            'cource_id' => $request->cource_id,
+            'filial_id' => $request->filial_id,
+            'max_student' => $request->max_student,
+            'status' => $request->status,
+        ]);
+        return redirect()->route('group.show',$group->id)->with('success','Group created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Group $group)
+    public function show($id)
     {
+        $rooms = Room::where('status',1)->latest()->get();
+        $group = Group::find($id);
         return view('group.show',[
             'group' => $group,
+            'rooms' => $rooms,
         ]);
     }
 
