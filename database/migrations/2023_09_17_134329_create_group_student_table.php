@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('student_id');
+            $table->tinyInteger('status')->comment('0->close 1->active');
             $table->timestamps();
         });
     }

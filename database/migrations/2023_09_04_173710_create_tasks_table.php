@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->tinyInteger('time');
+            $table->string('comment')->nullable();
+            $table->time('time');
             $table->tinyInteger('day');
-            $table->tinyInteger('type');
+            $table->tinyInteger('type')->comment('1 -> every day, 2 -> one time');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('attach_user_id');
             $table->tinyInteger('status');

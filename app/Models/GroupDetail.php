@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $teacher_id
  * @property Time $begin_time
  * @property Time $end_time
+ * @property int $status
  * */
 
 class GroupDetail extends Model
@@ -25,6 +26,7 @@ class GroupDetail extends Model
         'teacher_id',
         'begin_time',
         'end_time',
+        'status'
     ];
 
     public function room(){

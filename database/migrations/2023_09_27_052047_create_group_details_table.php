@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('teacher_id');
             $table->time('begin_time');
             $table->time('end_time');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property Group $group_id
  * @property Room $student_id
+ * @property int $status
  * */
 
 class GroupStudent extends Model
@@ -19,6 +20,7 @@ class GroupStudent extends Model
     protected $fillable = [
         'group_id',
         'student_id',
+        'status',
     ];
 
     public function student(){

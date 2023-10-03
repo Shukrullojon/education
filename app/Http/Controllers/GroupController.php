@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Cource;
 use App\Models\Filial;
 use App\Models\Group;
+use App\Models\GroupDetail;
+use App\Models\GroupStudent;
 use App\Models\Room;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -58,16 +61,52 @@ class GroupController extends Controller
         return redirect()->route('group.show',$group->id)->with('success','Group created successfully');
     }
 
+    public function detailstore(Request $request){
+        $this->validate($request, [
+            'room_id' => 'required',
+            'teacher_id' => 'required',
+            'begin_time' => 'required',
+            'end_time' => 'required',
+            'status' => 'required',
+        ]);
+        GroupDetail::create([
+            'group_id' => $request->group_id,
+            'room_id' => $request->room_id,
+            'teacher_id' => $request->teacher_id,
+            'begin_time' => $request->begin_time,
+            'end_time' => $request->end_time,
+            'status' => $request->status,
+        ]);
+        return redirect()->route('group.show',$request->group_id)->with('success','Group Details created successfully');
+    }
+
+    public function studentstore(Request $request){
+        $this->validate($request, [
+            'group_id' => 'required',
+            'student_id' => 'required',
+            'status' => 'required',
+        ]);
+        GroupStudent::create([
+            'group_id' => $request->group_id,
+            'student_id' => $request->student_id,
+            'status' => $request->status,
+        ]);
+        return redirect()->route('group.show',$request->group_id)->with('success','Group Student created successfully');
+    }
     /**
      * Display the specified resource.
      */
     public function show($id)
     {
-        $rooms = Room::where('status',1)->latest()->get();
+        $rooms = Room::where('status',1)->latest()->get()->pluck('name','id');
+        $teachers = User::get()->pluck('name','id');
+        $students = User::get()->pluck('name','id');
         $group = Group::find($id);
         return view('group.show',[
             'group' => $group,
             'rooms' => $rooms,
+            'teachers' => $teachers,
+            'students' => $students,
         ]);
     }
 

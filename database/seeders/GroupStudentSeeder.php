@@ -19,6 +19,7 @@ class GroupStudentSeeder extends Seeder
             GroupStudent::firstOrCreate([
                 'group_id' => Group::select('id')->inRandomOrder()->first()->id,
                 'student_id' => User::select('id')->inRandomOrder()->first()->id,
+                'status' => 1,
             ]);
         }
     }

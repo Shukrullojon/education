@@ -38,18 +38,10 @@ class Group extends Model
     }
 
     public function detail(){
-        return $this->hasMany(GroupDetail::class,'group_id','id');
-    }
-
-    public function room(){
-        return $this->hasMany(GroupDetail::class,'room_id','id');
-    }
-
-    public function teacher(){
-        return $this->hasMany(GroupDetail::class,'teacher_id','id');
+        return $this->hasMany(GroupDetail::class,'group_id','id')->orderByDesc('id');
     }
 
     public function student(){
-        return $this->hasMany(GroupStudent::class);
+        return $this->hasMany(GroupStudent::class)->orderByDesc('id');
     }
 }

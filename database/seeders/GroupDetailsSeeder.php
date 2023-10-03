@@ -26,6 +26,7 @@ class GroupDetailsSeeder extends Seeder
                     'group_id' => Group::select('id')->inRandomOrder()->first()->id,
                     'begin_time' => $time.':00',
                     'end_time' => $time++.':00',
+                    'status' => 1,
                 ]
             );
         }

@@ -160,9 +160,12 @@
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-5">
                                         @if(!empty(auth()->user()->id))
-                                            <a href="{{ route('users.show',auth()->user()->id) }}" class="menu-link px-5">My
-                                                Profile</a>
+                                            <a href="{{ route('users.show',auth()->user()->id) }}" class="menu-link px-5">Profile</a>
                                         @endif
+                                    </div>
+
+                                    <div class="menu-item px-5">
+                                            <a href="" class="menu-link px-5">Tasks</a>
                                     </div>
 
                                     <!--begin::Menu item-->
