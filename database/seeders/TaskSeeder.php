@@ -19,12 +19,12 @@ class TaskSeeder extends Seeder
             Task::create([
                'name' => Str::random(10),
                'comment' => Str::random(20),
-                'time' => rand(10,24).':00',
-                'day' => rand(1,30),
-                'type' => rand(1,2),
-                'user_id' => User::select('id')->inRandomOrder()->first()->id,
-                'attach_user_id' => User::select('id')->inRandomOrder()->first()->id,
-                'status' => 1
+               'time' => rand(10,24).':00',
+               'day' => rand(1,7),
+               'type' => rand(1,2),
+               'user_id' => User::select('id')->inRandomOrder()->first()->id,
+               'attach_user_id' => User::select('id')->inRandomOrder()->first()->id,
+               'status' => 1
             ]);
         }
     }

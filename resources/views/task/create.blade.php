@@ -50,14 +50,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Day:</strong>
-                    {!! Form::text('day', null, array('placeholder' => 'Day','class' => 'form-control')) !!}
+                    {!! Form::select('day', \App\Helpers\DayHelper::$dayList, null,['class' => 'form-control']) !!}
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Type:</strong>
-                    {!! Form::text('type', null, array('placeholder' => 'Type','class' => 'form-control')) !!}
+                    {!! Form::select('type',\App\Helpers\TypeHelper::$dayType ,null, ['class' => 'form-control']) !!}
                 </div>
             </div>
 

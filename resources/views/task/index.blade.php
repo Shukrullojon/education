@@ -18,25 +18,28 @@
             </div>
         @endif
 
-
         <table class="table table-bordered">
             <tr>
-                <th>name</th>
-                <th>time</th>
-                <th>day</th>
-                <th>user</th>
-                <th>attach user</th>
-                <th>status</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Day</th>
+                <th>Type</th>
+                <th>User</th>
+                <th>Attach User</th>
+                <th>Close User</th>
+                <th>Status</th>
                 <th width="280px">Action</th>
             </tr>
             @foreach ($tasks as $key => $task)
                 <tr>
                     <td>{{ $task->name }}</td>
                     <td>{{ $task->time }}</td>
-                    <td>{{ $task->day }}</td>
-                    <td>{{ $task->user->name }}</td>
-                    <td>{{ $task->attach_user->name }}</td>
-                    <td>{{ $task->status }}</td>
+                    <td>{{ \App\Helpers\DayHelper::getDay($task->day) }}</td>
+                    <td>{{ \App\Helpers\TypeHelper::getDayType($task->type) }}</td>
+                    <td>{{ $task->user->name ?? '' }}</td>
+                    <td>{{ $task->attach_user->name ?? '' }}</td>
+                    <td>{{ $task->close_user->name ?? '' }}</td>
+                    <td>{{ \App\Helpers\StatusHelper::taskStatusGet($task->status) }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('task.show',$task->id) }}">Show</a>
                         <a class="btn btn-primary" href="{{ route('task.edit',$task->id) }}">Edit</a>

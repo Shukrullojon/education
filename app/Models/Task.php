@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $type
  * @property int $user_id
  * @property int $attach_user_id
+ * @property int $close_user_id
  * @property int $status
  * */
 
@@ -30,6 +31,7 @@ class Task extends Model
         'type',
         'user_id',
         'attach_user_id',
+        'close_user_id',
         'status',
     ];
 
@@ -39,5 +41,13 @@ class Task extends Model
 
     public function attach_user(){
         return $this->belongsTo(User::class,'attach_user_id','id');
+    }
+
+    public function close_user(){
+        return $this->belongsTo(User::class,'close_user_id','id');
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class,'model_id','id')->where('model',Task::class);
     }
 }

@@ -56,6 +56,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
+
         return view('task.show',[
             'task' => $task,
         ]);
@@ -86,7 +87,7 @@ class TaskController extends Controller
             'type' => 'required',
             'attach_user_id' => 'required',
         ]);
-        Task::update($request->all());
+        $task->update($request->all());
         return redirect()->route('task.index')->with('success','Task updated successfully');
     }
 
@@ -95,7 +96,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        $task->delete();
-        return redirect()->route('task.index')->with('success','Task deleted successfully');
+        $task->update([
+            'close_user_id' => auth()->user()->id,
+            'status' => 0,
+        ]);
+        return back()->with('success','Task archived successfully');
     }
 }

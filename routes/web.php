@@ -28,11 +28,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('task-room',RoomTaskController::class);
     Route::resource('cource',CourceController::class);
     Route::resource('task',\App\Http\Controllers\TaskController::class);
-});
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::resource('group',GroupController::class);
-    Route::post('group/detailstore', [GroupController::class,'detailstore'])->name('groupdetailstore');
-    Route::post('group/studentstore', [GroupController::class,'studentstore'])->name('groupstudentstore');
+    Route::group(['prefix' => 'group', 'namespace' => '\App\Http\Controllers'], function () {
+        Route::resource('group',GroupController::class);
+        Route::post('detailstore', 'GroupController@detailstore')->name('groupdetailstore');
+        Route::post('studentstore', 'GroupController@studentstore')->name('groupstudentstore');
+    });
+
+    Route::group(['prefix' => 'student', 'namespace' => '\App\Http\Controllers'], function () {
+        Route::get('/', 'StudentController@index')->name('studentIndex');
+    });
 });
 
