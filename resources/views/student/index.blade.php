@@ -14,17 +14,17 @@
                 <!--begin::Thead-->
                 <thead class="border-bottom border-gray-200 fs-7 text-uppercase fw-bolder">
                 <tr class="text-start text-muted gs-0">
-                    <th class="min-w-100px">Comment</th>
-                    <th class="min-w-100px">User</th>
+                    <th class="min-w-100px">Name</th>
+                    <th class="min-w-100px">Phone</th>
                 </tr>
                 </thead>
                 <!--end::Thead-->
                 <!--begin::Tbody-->
                 <tbody class="fs-6 fw-bold text-gray-600">
-                @foreach($task->comments as $comment)
+                @foreach($students as $student)
                     <tr>
-                        <td><i>{{ $comment->comment }}</i></td>
-                        <td><i>{{ $comment->user->name }}</i></td>
+                        <td><i>{{ $student->name }}</i></td>
+                        <td><i>{{ $student->phone }}</i></td>
                     </tr>
                 @endforeach
                 </tbody>

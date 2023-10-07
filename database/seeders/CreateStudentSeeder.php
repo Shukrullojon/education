@@ -98,5 +98,13 @@ class CreateStudentSeeder extends Seeder
             'password' => bcrypt('student10')
         ]);
         $user9->assignRole([$role->id]);
+
+        $user10 = User::create([
+            'name' => 'STUDENT 11',
+            'email' => 'student11@gmail.com',
+            'phone' => '991234579',
+            'password' => bcrypt('student11')
+        ]);
+        $user10->assignRole([$role->id]);
     }
 }

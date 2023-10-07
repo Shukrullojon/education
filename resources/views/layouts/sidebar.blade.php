@@ -184,12 +184,57 @@
 									</span>
                 <div class="menu-sub menu-sub-accordion menu-active-bg">
                     <div class="menu-item">
+                        <a class="menu-link " href="">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Add</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link " href="">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Process</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link " href="">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Probny</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link " href="">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Active</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
                         <a class="menu-link {{ Request::is('student*') ? 'active' : '' }}"
-                           href="{{ route('') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
+                           href="{{ route('studentIndex') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">All</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link" href="">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Arxive</span>
                         </a>
                     </div>
                 </div>
