@@ -37,6 +37,11 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::group(['prefix' => 'student', 'namespace' => '\App\Http\Controllers'], function () {
         Route::get('/', 'StudentController@index')->name('studentIndex');
+        Route::get('/create', 'StudentController@create')->name('studentCreate');
+        Route::post('/store', 'StudentController@store')->name('studentStore');
+        Route::get('/archive', 'StudentController@archive')->name('studentArchive');
+        Route::get('/waiting', 'StudentController@waiting')->name('studentWaiting');
+        Route::get('/active', 'StudentController@active')->name('studentActive');
     });
 });
 

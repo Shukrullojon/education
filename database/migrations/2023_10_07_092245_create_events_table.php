@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('states_change', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('model');
-            $table->unsignedBigInteger('model_id');
-            $table->unsignedBigInteger('state_id');
-            $table->unsignedBigInteger('change_state_id')->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->string('name');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('states_change');
+        Schema::dropIfExists('events');
     }
 };

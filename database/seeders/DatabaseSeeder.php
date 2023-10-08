@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateAdminUserSeeder::class);
         $this->call(CreateStudentSeeder::class);
         $this->call(CreateTeacherSeeder::class);
+        $this->call(CreateReceptionSeeder::class);
         $this->call(FilialSeeder::class);
         $this->call(RoomSeeder::class);
         $this->call(RoomTaskSeeder::class);
@@ -27,5 +28,11 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupDetailsSeeder::class);
         $this->call(TaskSeeder::class);
         $this->call(CommentSeeder::class);
+        $this->call(EventSeeder::class);
+        $this->call(UserEventSeeder::class);
+        $this->call(PCSeeder::class);
+        $this->call(PTSeeder::class);
+        $this->call(PUSeeder::class);
+        $this->call(PURSeeder::class);
     }
 }

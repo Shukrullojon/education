@@ -19,26 +19,33 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'phone',
         'password',
+        'reception_id',
+        'is_payment',
+        'status',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    public function reception(){
+        return $this->belongsTo(User::class,'reception_id','id');
+    }
+
+    public function event(){
+        return $this->hasOne(EventUser::class,'user_id','id')->orderByDesc('id');
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
+    }
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
