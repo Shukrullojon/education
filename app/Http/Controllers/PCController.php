@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PC;
 use Illuminate\Http\Request;
 
 class PCController extends Controller
@@ -11,7 +12,10 @@ class PCController extends Controller
      */
     public function index()
     {
-        //
+        $pcs = PC::latest()->paginate(20);
+        return view('pc.index',[
+            'pcs' => $pcs
+        ]);
     }
 
     /**
@@ -19,7 +23,7 @@ class PCController extends Controller
      */
     public function create()
     {
-        //
+        return view('pc.create');
     }
 
     /**
@@ -27,7 +31,12 @@ class PCController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'status' => 'required',
+        ]);
+        PC::create($request->all());
+        return redirect()->route('pc.index')->with('success','Placement category created successfully');
     }
 
     /**
@@ -35,7 +44,10 @@ class PCController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pc = PC::find($id);
+        return view('pc.show',[
+            'pc' => $pc,
+        ]);
     }
 
     /**
@@ -43,7 +55,10 @@ class PCController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pc = PC::find($id);
+        return view('pc.edit',[
+            'pc' => $pc,
+        ]);
     }
 
     /**
@@ -51,7 +66,14 @@ class PCController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'status' => 'required',
+        ]);
+        $pc = PC::find($id);
+        $pc->update($request->all());
+        return redirect()->route('pc.index')
+            ->with('success','Placement Category updated successfully');
     }
 
     /**
@@ -59,6 +81,8 @@ class PCController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        PC::where('id',$id)->delete();
+        return redirect()->route('pc.index')
+            ->with('success','Placement Category deleted successfully');
     }
 }

@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('task-room',RoomTaskController::class);
     Route::resource('cource',CourceController::class);
     Route::resource('task',\App\Http\Controllers\TaskController::class);
+    Route::resource('pc',\App\Http\Controllers\PCController::class);
+    Route::resource('pt',\App\Http\Controllers\PTController::class);
 
     Route::group(['prefix' => 'group', 'namespace' => '\App\Http\Controllers'], function () {
         Route::resource('group',GroupController::class);

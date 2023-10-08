@@ -231,8 +231,7 @@
                 </div>
             </div>
 
-            <div data-kt-menu-trigger="click"
-                 class="menu-item {{ (Request::is('student*')) ? 'here show' : '' }} menu-accordion">
+            <div data-kt-menu-trigger="click" class="menu-item {{ (Request::is('pc*') or Request::is('pt*')) ? 'here show' : '' }} menu-accordion">
                 <span class="menu-link">
                     <span class="menu-icon">
                         <span class="svg-icon svg-icon-2">
@@ -254,23 +253,21 @@
                 </span>
                 <div class="menu-sub menu-sub-accordion menu-active-bg">
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('student/create') ? 'active' : '' }}" href="{{ route('studentCreate') }}">
+                        <a class="menu-link {{ Request::is('pc*') ? 'active' : '' }}" href="{{ route('pc.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
                             <span class="menu-title">Category</span>
                         </a>
                     </div>
-
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('student/waiting') ? 'active' : '' }}" href="">
+                        <a class="menu-link {{ Request::is('pt*') ? 'active' : '' }}" href="{{ route('pt.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
                             <span class="menu-title">Test</span>
                         </a>
                     </div>
-
                 </div>
             </div>
 

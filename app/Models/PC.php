@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property String $name
+ * @property integer $status
  * */
 
 class PC extends Model
@@ -17,5 +18,6 @@ class PC extends Model
 
     protected $fillable = [
         'name',
+        'status',
     ];
 }
