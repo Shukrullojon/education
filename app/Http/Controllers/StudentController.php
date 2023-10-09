@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\PC;
+use App\Models\PU;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -33,14 +35,18 @@ class StudentController extends Controller
         ]);
     }
 
-    public function create(){
-        $events = Event::where('status',1)->get()->pluck('name','id');
-        return view('student.create',[
-            'events' => $events
+    public function create()
+    {
+        $events = Event::where('status', 1)->get()->pluck('name', 'id');
+        $pcs = PC::where('status', 1)->get()->pluck('name', 'id');
+        return view('student.create', [
+            'events' => $events,
+            'pcs' => $pcs,
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required',
             'surname' => 'required',
@@ -48,7 +54,7 @@ class StudentController extends Controller
             'phone' => 'required',
             'event_id' => 'required',
         ]);
-        $role = Role::where('name','Student')->first();
+        $role = Role::where('name', 'Student')->first();
         $student = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -59,20 +65,29 @@ class StudentController extends Controller
             'is_payment' => ($request->status) ? 1 : 0,
         ]);
         $student->assignRole([$role->id]);
-        $student->events()->attach($request->event_id,['change_user_id' => auth()->user()->id]);
-        if ($request->status == 0){
-            return redirect()->route('studentArchive')->with('success','Student archived successfully');
-        }else if($request->status == 1){
-            return redirect()->route('studentWaiting')->with('success','Student waiting successfully');
-        }else if($request->status == 2){
-            return redirect()->route('studentActive')->with('success','Student active successfully');
-        }else{
+        $student->events()->attach($request->event_id, ['change_user_id' => auth()->user()->id]);
+        if ($request->pc_id)
+            PU::create([
+                'user_id' => $student->id,
+                'p_c_id' => $request->pc_id,
+                'attach_user_id' => auth()->user()->id,
+                'status' => 1,
+            ]);
+
+        if ($request->status == 0) {
+            return redirect()->route('studentArchive')->with('success', 'Student archived successfully');
+        } else if ($request->status == 1) {
+            return redirect()->route('studentWaiting')->with('success', 'Student waiting successfully');
+        } else if ($request->status == 2) {
+            return redirect()->route('studentActive')->with('success', 'Student active successfully');
+        } else {
             return back();
         }
     }
 
-    public function waiting(){
-        $events = Event::where('status',1)->get();
+    public function waiting()
+    {
+        $events = Event::where('status', 1)->get();
         $students = User::select(
             'users.id as id',
             'users.name as name',
@@ -83,7 +98,7 @@ class StudentController extends Controller
             ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
             ->where('roles.name', 'Student')
             ->where('model_has_roles.model_type', User::class)
-            ->where('users.status',1)
+            ->where('users.status', 1)
             ->latest('users.created_at')
             ->get();
         return view('student.waiting', [
@@ -92,4 +107,10 @@ class StudentController extends Controller
         ]);
     }
 
+    public function work(){
+        $pus = PU::where('user_id',auth()->user()->id)->where('status',1)->latest()->first();
+        return view('student.work',[
+            'pus' => $pus,
+        ]);
+    }
 }

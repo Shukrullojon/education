@@ -165,6 +165,10 @@
                                     </div>
 
                                     <div class="menu-item px-5">
+                                            <a href="{{ route('studentWork') }}" class="menu-link px-5">Test</a>
+                                    </div>
+
+                                    <div class="menu-item px-5">
                                             <a href="" class="menu-link px-5">Tasks</a>
                                     </div>
 

@@ -24,4 +24,8 @@ class PU extends Model
         'attach_user_id',
         'status',
     ];
+
+    public function pc(){
+        return $this->belongsTo(PC::class,'p_c_id','id');
+    }
 }

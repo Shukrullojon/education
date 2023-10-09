@@ -1,11 +1,12 @@
 @extends('layouts.admin')
 
+
 @section('content')
     <div class="card mb-12 mb-xl-12" id="kt_profile_details_view" style="margin: 10px; padding: 10px">
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Create New Student</h2>
+                    <h2>Create New Placement Test</h2>
                 </div>
             </div>
         </div>
@@ -24,54 +25,54 @@
         @endif
 
 
-        {!! Form::open(array('route' => 'studentStore','method'=>'POST')) !!}
+        {!! Form::open(array('route' => 'pt.store','method'=>'POST')) !!}
         <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
-                    {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                    <strong>Question:</strong>
+                    {!! Form::text('question', null, array('placeholder' => 'Question','class' => 'form-control')) !!}
                 </div>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Surname:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
-                    {!! Form::text('surname', null, array('placeholder' => 'Surname','class' => 'form-control')) !!}
+                    <strong>A:</strong>
+                    {!! Form::text('a', null, array('placeholder' => 'A','class' => 'form-control')) !!}
                 </div>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Email:</strong>
-                    {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                    <strong>B:</strong>
+                    {!! Form::text('b', null, array('placeholder' => 'B','class' => 'form-control')) !!}
                 </div>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Phone:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
-                    {!! Form::text('phone', null, array('placeholder' => 'Phone','class' => 'form-control')) !!}
+                    <strong>C:</strong>
+                    {!! Form::text('c', null, array('placeholder' => 'C','class' => 'form-control')) !!}
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Event:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
-                    {!! Form::select('event_id', $events,null, ['class' => 'form-control']) !!}
+                    <strong>D:</strong>
+                    {!! Form::text('d', null, array('placeholder' => 'D','class' => 'form-control')) !!}
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Placement Category:</strong>
-                    {!! Form::select('pc_id', $pcs,null, ['placeholder' => '','class' => 'form-control']) !!}
+                    <strong>Answer:</strong>
+                    {!! Form::select('answer', \App\Helpers\PTHelper::$answers, null,['class' => 'form-control']) !!}
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Status:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
-                    {!! Form::select('status', \App\Helpers\StatusHelper::$studentStatus,null, ['class' => 'form-control']) !!}
+                    <strong>Category</strong>
+                    {!! Form::select('p_c_id', $pcs, null,['class' => 'form-control']) !!}
                 </div>
             </div>
 

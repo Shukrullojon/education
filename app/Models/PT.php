@@ -30,4 +30,8 @@ class PT extends Model
         'answer',
         'p_c_id',
     ];
+
+    public function pc(){
+        return $this->belongsTo(PC::class,'p_c_id','id');
+    }
 }

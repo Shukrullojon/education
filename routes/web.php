@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/archive', 'StudentController@archive')->name('studentArchive');
         Route::get('/waiting', 'StudentController@waiting')->name('studentWaiting');
         Route::get('/active', 'StudentController@active')->name('studentActive');
+        Route::get('/work', 'StudentController@work')->name('studentWork');
     });
 });
 

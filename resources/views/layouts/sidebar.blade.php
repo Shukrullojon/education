@@ -193,7 +193,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('student/waiting') ? 'active' : '' }}" href="">
+                        <a class="menu-link {{ Request::is('student/waiting') ? 'active' : '' }}" href="{{ route('studentWaiting') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>

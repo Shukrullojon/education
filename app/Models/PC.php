@@ -20,4 +20,8 @@ class PC extends Model
         'name',
         'status',
     ];
+
+    public function ptRand(){
+        return $this->hasMany(PT::class,'p_c_id','id')->inRandomOrder()->take(20);
+    }
 }

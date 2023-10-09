@@ -15,7 +15,7 @@ class PTSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 0; $i < 100; $i ++){
+        for ($i = 0; $i < 200; $i ++){
             PT::create([
                 'question' => Str::random(20),
                 'a' => Str::random(10),
