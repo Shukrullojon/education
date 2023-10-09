@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\PC;
 use App\Models\PU;
+use App\Models\PUR;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -108,9 +109,38 @@ class StudentController extends Controller
     }
 
     public function work(){
-        $pus = PU::where('user_id',auth()->user()->id)->where('status',1)->latest()->first();
+        $pu = PU::where('user_id',auth()->user()->id)->where('status',1)->latest()->first();
+        $pur = PU::where('status',2)
+            ->where('user_id',auth()->user()->id)
+            ->latest()
+            ->get();
         return view('student.work',[
-            'pus' => $pus,
+            'pu' => $pu,
+            'pur' => $pur,
+        ]);
+    }
+
+    public function workStore(Request $request){
+        $this->validate($request, [
+            'p_u_id' => 'required',
+        ]);
+        PU::where('id',$request->p_u_id)->update([
+            'status' => 2,
+        ]);
+        foreach ($request->test as $key => $t){
+            PUR::create([
+                'p_u_id' => $request->p_u_id,
+                'p_t_id' => $key,
+                'answer' => $t,
+            ]);
+        }
+        return redirect()->route('studentWork');
+    }
+
+    public function result($id){
+        $pu = PU::where('id',$id)->where('user_id',auth()->user()->id)->first();
+        return view('student.result',[
+            'pu' => $pu,
         ]);
     }
 }

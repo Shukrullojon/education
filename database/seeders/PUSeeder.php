@@ -38,7 +38,7 @@ class PUSeeder extends Seeder
                     ->inRandomOrder()
                     ->first()
                     ->id,
-                'status' => rand(0,2),
+                'status' => rand(1,2),
             ]);
         }
     }

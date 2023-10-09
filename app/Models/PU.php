@@ -28,4 +28,17 @@ class PU extends Model
     public function pc(){
         return $this->belongsTo(PC::class,'p_c_id','id');
     }
+
+    public function pur(){
+        return $this->hasMany(PUR::class,'p_u_id','id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function attach(){
+        return $this->belongsTo(User::class,'attach_user_id','id');
+    }
+
 }

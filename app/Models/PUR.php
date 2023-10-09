@@ -22,4 +22,8 @@ class PUR extends Model
         'p_t_id',
         'answer',
     ];
+
+    public function pt(){
+        return $this->belongsTo(PT::class,'p_t_id','id');
+    }
 }

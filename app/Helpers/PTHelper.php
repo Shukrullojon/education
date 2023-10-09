@@ -16,4 +16,12 @@ class PTHelper
         return self::$answers[$index] ?: 'Undefined';
     }
 
+    public static $placementStatus = [
+        '1' => '👨‍💻 Work',
+        '2' => '🏁 Finish',
+    ];
+
+    public static function placementStatusGet($index){
+        return self::$placementStatus[$index] ?? 'Undefined';
+    }
 }

@@ -103,4 +103,11 @@ class PTController extends Controller
             ->with('success','Placement Test deleted successfully');
     }
 
+    public function results(){
+        $pus = PU::latest()->paginate(30);
+        return view('pt.result',[
+            'pus' => $pus,
+        ]);
+    }
+
 }

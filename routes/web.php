@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('task',\App\Http\Controllers\TaskController::class);
     Route::resource('pc',\App\Http\Controllers\PCController::class);
     Route::resource('pt',\App\Http\Controllers\PTController::class);
+    Route::get('testresults/all','\App\Http\Controllers\PTController@results')->name('ptResult');
 
     Route::group(['prefix' => 'group', 'namespace' => '\App\Http\Controllers'], function () {
         Route::resource('group',GroupController::class);
@@ -45,6 +46,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/waiting', 'StudentController@waiting')->name('studentWaiting');
         Route::get('/active', 'StudentController@active')->name('studentActive');
         Route::get('/work', 'StudentController@work')->name('studentWork');
+        Route::post('/work/store', 'StudentController@workStore')->name('studentWorkStore');
+        Route::get('/work/result/{id}', 'StudentController@result')->name('studentWorkResult');
     });
 });
 
