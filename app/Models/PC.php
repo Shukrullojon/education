@@ -19,6 +19,7 @@ class PC extends Model
     protected $fillable = [
         'name',
         'status',
+        'minute',
     ];
 
     public function ptRand(){

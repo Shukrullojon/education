@@ -40,16 +40,15 @@ Route::group(['middleware' => ['auth']], function() {
     });
 
     Route::group(['prefix' => 'student', 'namespace' => '\App\Http\Controllers'], function () {
-        Route::get('/', 'StudentController@index')->name('studentIndex');
         Route::get('/create', 'StudentController@create')->name('studentCreate');
+        Route::get('/waiting', 'StudentController@waiting')->name('studentWaiting');
+        Route::get('/active', 'StudentController@active')->name('studentActive');
+        Route::get('/all', 'StudentController@all')->name('studentAll');
+        Route::get('/archive', 'StudentController@archive')->name('studentArchive');
         Route::post('/store', 'StudentController@store')->name('studentStore');
         Route::get('/edit/{id}', 'StudentController@edit')->name('studentEdit');
         Route::patch('/update/{id}', 'StudentController@update')->name('studentUpdate');
         Route::get('/show/{id}', 'StudentController@show')->name('studentShow');
-        Route::get('/archive', 'StudentController@archive')->name('studentArchive');
-        Route::get('/waiting', 'StudentController@waiting')->name('studentWaiting');
-        Route::get('/active', 'StudentController@active')->name('studentActive');
-        Route::get('/active', 'StudentController@active')->name('studentActive');
         Route::get('/work', 'StudentController@work')->name('studentWork');
         Route::post('/work/store', 'StudentController@workStore')->name('studentWorkStore');
         Route::get('/work/result/{id}', 'StudentController@result')->name('studentWorkResult');

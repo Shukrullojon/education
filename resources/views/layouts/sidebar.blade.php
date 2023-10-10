@@ -211,8 +211,8 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('student') ? 'active' : '' }}"
-                           href="{{ route('studentIndex') }}">
+                        <a class="menu-link {{ Request::is('student/all') ? 'active' : '' }}"
+                           href="{{ route('studentAll') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>

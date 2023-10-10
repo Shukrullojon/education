@@ -15,6 +15,7 @@ return new class extends Migration
             // placement test category
             $table->id();
             $table->string('name');
+            $table->tinyInteger('minute');
             $table->tinyInteger('status');
             $table->timestamps();
         });

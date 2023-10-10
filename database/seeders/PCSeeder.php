@@ -16,26 +16,32 @@ class PCSeeder extends Seeder
         $pc = [
             [
                 'name' => 'Beginner',
+                'minute' => rand(20,60),
                 'status' => 1,
             ],
             [
                 'name' => 'Elementary',
+                'minute' => rand(20,60),
                 'status' => 1,
             ],
             [
                 'name' => 'Per-Intermediate',
+                'minute' => rand(20,60),
                 'status' => 1,
             ],
             [
                 'name' => 'Intermediate',
+                'minute' => rand(20,60),
                 'status' => 1,
             ],
             [
                 'name' => 'Upper-Intermediate',
+                'minute' => rand(20,60),
                 'status' => 1,
             ],
             [
                 'name' => 'Advanced',
+                'minute' => rand(20,60),
                 'status' => 1,
             ],
         ];

@@ -54,21 +54,28 @@
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <div class="form-group">
+                    <strong>Group:</strong>
+                    {!! Form::select('group_id', $groups, null, ['placeholder' => '','class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="form-group">
                     <strong>Event:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
                     {!! Form::select('event_id', $events,null, ['class' => 'form-control']) !!}
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="form-group">
                     <strong>Placement Category:</strong>
                     {!! Form::select('pc_id', $pcs,null, ['placeholder' => '','class' => 'form-control']) !!}
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="form-group">
                     <strong>Status:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
                     {!! Form::select('status', \App\Helpers\StatusHelper::$studentStatus,null, ['class' => 'form-control']) !!}

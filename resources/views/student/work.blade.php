@@ -4,48 +4,50 @@
     <div class="card mb-12 mb-xl-12" id="kt_profile_details_view" style="margin: 10px; padding: 10px">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card card-xl-stretch mb-5 mb-xl-8">
-                    <div class="card-body py-3">
-                        <div class="table-responsive">
-                            <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-                                <tbody>
-                                <tr>
-                                    <td>Category</td>
-                                    <td>Student</td>
-                                    <td>Number</td>
-                                    <td>Correct</td>
-                                    <td>Incorrect</td>
-                                    <td></td>
-                                </tr>
-                                @foreach($pur as $p)
-                                    {{--calculate--}}
-                                    @php
-                                        $number = count($p->pur);
-                                        $correct = 0;
-                                        $incorrect = 0;
-                                        foreach ($p->pur as $t){
-                                            if ($t->answer == $t->pt->answer)
-                                                $correct++;
-                                            else
-                                                $incorrect++;
-                                        }
-                                    @endphp
+                @if(count($pur))
+                    <div class="card card-xl-stretch mb-5 mb-xl-8">
+                        <div class="card-body py-3">
+                            <div class="table-responsive">
+                                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                    <tbody>
                                     <tr>
-                                        <td>{{ $p->pc->name }}</td>
-                                        <td>{{ auth()->user()->name }}</td>
-                                        <td>{{ $number }}</td>
-                                        <td>{{ $correct }}</td>
-                                        <td>{{ $incorrect }}</td>
-                                        <td>
-                                            <a href="{{ route('studentWorkResult',$p->id) }}">Show</a>
-                                        </td>
+                                        <td>Category</td>
+                                        <td>Student</td>
+                                        <td>Number</td>
+                                        <td>Correct</td>
+                                        <td>Incorrect</td>
+                                        <td></td>
                                     </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                                    @foreach($pur as $p)
+                                        {{--calculate--}}
+                                        @php
+                                            $number = count($p->pur);
+                                            $correct = 0;
+                                            $incorrect = 0;
+                                            foreach ($p->pur as $t){
+                                                if ($t->answer == $t->pt->answer)
+                                                    $correct++;
+                                                else
+                                                    $incorrect++;
+                                            }
+                                        @endphp
+                                        <tr>
+                                            <td>{{ $p->pc->name }}</td>
+                                            <td>{{ auth()->user()->name }}</td>
+                                            <td>{{ $number }}</td>
+                                            <td>{{ $correct }}</td>
+                                            <td>{{ $incorrect }}</td>
+                                            <td>
+                                                <a href="{{ route('studentWorkResult',$p->id) }}">Show</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
                 @if($pu)
                     <div class="card card-xl-stretch mb-5 mb-xl-8">

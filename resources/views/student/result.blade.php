@@ -33,7 +33,7 @@
                             <td><i>{{ \App\Helpers\PTHelper::answerGet($p->pt->answer ?? 0) }}({{ \App\Helpers\PTHelper::answerGet($p->answer ?? 0) }})</i></td>
                             <td>
                                 <i>
-                                    @if($p->pt->answer ?? 0 == $p->answer ?? 0)
+                                    @if($p->pt->answer == $p->answer)
                                         ✅
                                     @else
                                         ❌

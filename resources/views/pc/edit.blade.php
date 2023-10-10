@@ -35,6 +35,13 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>Minute:</strong>
+                    {!! Form::text('minute', null, array('placeholder' => 'Minute','class' => 'form-control')) !!}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Status:</strong>
                     {!! Form::select('status', \App\Helpers\StatusHelper::$taskStatus,null, ['class' => 'form-control']) !!}
                 </div>

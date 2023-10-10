@@ -16,7 +16,7 @@ use Spatie\Permission\Models\Role;
 
 class StudentController extends Controller
 {
-    public function index(Request $request)
+    public function all(Request $request)
     {
         $students = User::select(
             'users.id as id',
@@ -28,9 +28,10 @@ class StudentController extends Controller
             ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
             ->where('roles.name', 'Student')
             ->where('model_has_roles.model_type', User::class)
-            ->latest('users.created_at')
+            ->where('users.status',3)
+            ->latest('users.updated_at')
             ->get();
-        return view('student.index', [
+        return view('student.all', [
             'students' => $students,
         ]);
     }
@@ -39,20 +40,23 @@ class StudentController extends Controller
     {
         $events = Event::where('status', 1)->get()->pluck('name', 'id');
         $pcs = PC::where('status', 1)->get()->pluck('name', 'id');
+        $groups = Group::where('status', 1)->get()->pluck('name', 'id');
         return view('student.create', [
             'events' => $events,
             'pcs' => $pcs,
+            'groups' => $groups,
         ]);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'surname' => 'required',
-            'status' => 'required',
-            'phone' => 'required',
-            'event_id' => 'required',
+            'name' => 'required|min:3|max:50',
+            'surname' => 'required|min:3|max:50',
+            'email' => 'nullable|email',
+            'status' => 'required|in:0,1,2,3',
+            'phone' => 'required|unique:users,phone',
+            'event_id' => 'required|exists:events,id',
         ]);
         $role = Role::where('name', 'Student')->first();
         $student = User::create([
@@ -65,11 +69,20 @@ class StudentController extends Controller
             'is_payment' => ($request->status) ? 1 : 0,
         ]);
         $student->assignRole([$role->id]);
-        EventUser::create([
-            'user_id' => $student->id,
-            'change_user_id' => auth()->user()->id,
-            'event_id' => $request->event_id,
-        ]);
+        if ($request->event_id) {
+            EventUser::create([
+                'user_id' => $student->id,
+                'change_user_id' => auth()->user()->id,
+                'event_id' => $request->event_id,
+            ]);
+        }
+        if ($request->group_id){
+            GroupStudent::create([
+                'group_id' => $request->group_id,
+                'student_id' => $student->id,
+                'status' => 1,
+            ]);
+        }
         if ($request->pc_id)
             PU::create([
                 'user_id' => $student->id,
@@ -84,6 +97,8 @@ class StudentController extends Controller
             return redirect()->route('studentWaiting')->with('success', 'Student waiting successfully');
         } else if ($request->status == 2) {
             return redirect()->route('studentActive')->with('success', 'Student active successfully');
+        }else if($request->status == 3){
+            return redirect()->route('studentAll')->with('success', 'Student active successfully');
         } else {
             return back();
         }
@@ -110,6 +125,14 @@ class StudentController extends Controller
     }
 
     public function update(Request $request, $id){
+        $this->validate($request, [
+            'name' => 'required|min:3|max:50',
+            'surname' => 'required|min:3|max:50',
+            'email' => 'nullable|email',
+            'status' => 'required|in:0,1,2,3',
+            'phone' => 'required|unique:users,phone',
+            'event_id' => 'required|exists:events,id',
+        ]);
         $student = User::find($id);
         if ($request->pc_id){
             PU::create([
@@ -149,7 +172,7 @@ class StudentController extends Controller
         } else if ($request->status == 2) {
             return redirect()->route('studentActive')->with('success', 'Student active successfully');
         }else if($request->status == 3){
-            // student all
+            return redirect()->route('studentAll')->with('success', 'Student active successfully');
         } else {
             return back();
         }

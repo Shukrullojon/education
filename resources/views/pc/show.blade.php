@@ -20,6 +20,11 @@
                 </div>
 
                 <div class="form-group">
+                    <strong>Minute:</strong>
+                    {{ $pc->minute }}
+                </div>
+
+                <div class="form-group">
                     <strong>Status:</strong>
                     {{ \App\Helpers\StatusHelper::taskStatusGet($pc->status) }}
                 </div>

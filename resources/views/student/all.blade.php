@@ -4,7 +4,7 @@
     <div class="card pt-2 mb-6 mb-xl-9" style="margin: 10px; padding: 10px">
         <div class="card-header border-0">
             <div class="card-title">
-                <h2>Students</h2>
+                <h2>Students All</h2>
             </div>
         </div>
 
@@ -16,6 +16,10 @@
                 <tr class="text-start text-muted gs-0">
                     <th class="min-w-100px">Name</th>
                     <th class="min-w-100px">Phone</th>
+                    <th class="min-w-100px">Event</th>
+                    <th class="min-w-100px">Group</th>
+                    <th class="min-w-100px">Status</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <!--end::Thead-->
@@ -23,8 +27,15 @@
                 <tbody class="fs-6 fw-bold text-gray-600">
                 @foreach($students as $student)
                     <tr>
-                        <td><i>{{ $student->name }}</i></td>
+                        <td><i>{{ $student->name }} {{ $student->surname }}</i></td>
                         <td><i>{{ $student->phone }}</i></td>
+                        <td><i>{{ $student->event->event->name ?? '' }}</i></td>
+                        <td><i></i></td>
+                        <td><i>{{ \App\Helpers\StatusHelper::studentStatusGet($student->status) }}</i></td>
+                        <td>
+                            <a class="btn btn-info" target="_blank" href="{{ route('studentShow',$student->id) }}">Show</a>
+                            <a class="btn btn-primary" href="{{ route('studentEdit',$student->id) }}">Edit</a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

@@ -32,8 +32,9 @@ class PCController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'status' => 'required',
+            'name' => 'required|min:3|max:200',
+            'minute' => 'required|numeric|max:100',
+            'status' => 'required|numeric|in:0,1',
         ]);
         PC::create($request->all());
         return redirect()->route('pc.index')->with('success','Placement category created successfully');
@@ -67,8 +68,9 @@ class PCController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'status' => 'required',
+            'name' => 'required|min:3|max:200',
+            'minute' => 'required|numeric|max:100',
+            'status' => 'required|numeric|in:0,1',
         ]);
         $pc = PC::find($id);
         $pc->update($request->all());

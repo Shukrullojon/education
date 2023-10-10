@@ -22,12 +22,14 @@
         <table class="table table-bordered">
             <tr>
                 <th><b>Name</b></th>
+                <th><b>Minute</b></th>
                 <th><b>Status</b></th>
                 <th width="280px"><b>Action</b></th>
             </tr>
             @foreach ($pcs as $key => $pc)
                 <tr>
                     <td>{{ $pc->name }}</td>
+                    <td>{{ $pc->minute }}</td>
                     <td>{{ \App\Helpers\StatusHelper::taskStatusGet($pc->status) }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('pc.show',$pc->id) }}">Show</a>

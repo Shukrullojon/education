@@ -96,6 +96,8 @@
                     <th class="min-w-100px">Number</th>
                     <th class="min-w-100px">Correct</th>
                     <th class="min-w-100px">Incorrect</th>
+                    <th class="min-w-100px">Percentage</th>
+                    <th class="min-w-100px">Time</th>
                 </tr>
                 </thead>
                 <!--end::Thead-->
@@ -106,20 +108,25 @@
                             $number = count($p->pur);
                             $correct = 0;
                             $incorrect = 0;
+                            $percentage = 0;
                             foreach ($p->pur as $t){
                                 if ($t->answer == $t->pt->answer)
                                     $correct++;
                                 else
                                     $incorrect++;
                             }
+                            if ($number != 0)
+                                $percentage = round($correct/$number * 100);
                         @endphp
 
-                        <tr>
+                        <tr style="background-color: @if($percentage == 0) #FFCCCC @elseif($percentage > 0 and $percentage <= 30) #FFFFCC @elseif($percentage>30 and $percentage <= 60) #CCFFFF @elseif($percentage>60 and $percentage<=90) #99FF99 @else #009900 @endif ">
                             <td>{{ $p->pc->name }}</td>
                             <td>{{ $student->name }}</td>
                             <td>{{ $number }}</td>
                             <td>{{ $correct }}</td>
                             <td>{{ $incorrect }}</td>
+                            <td>{{ $percentage }} %</td>
+                            <td>40(20)</td>
                             <td>
                                 <a href="{{ route('studentWorkResult',$p->id) }}">Show</a>
                             </td>
