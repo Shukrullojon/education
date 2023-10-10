@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('task',\App\Http\Controllers\TaskController::class);
     Route::resource('pc',\App\Http\Controllers\PCController::class);
     Route::resource('pt',\App\Http\Controllers\PTController::class);
+    Route::resource('event',\App\Http\Controllers\EventController::class);
     Route::get('testresults/all','\App\Http\Controllers\PTController@results')->name('ptResult');
 
     Route::group(['prefix' => 'group', 'namespace' => '\App\Http\Controllers'], function () {
@@ -42,8 +43,12 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', 'StudentController@index')->name('studentIndex');
         Route::get('/create', 'StudentController@create')->name('studentCreate');
         Route::post('/store', 'StudentController@store')->name('studentStore');
+        Route::get('/edit/{id}', 'StudentController@edit')->name('studentEdit');
+        Route::patch('/update/{id}', 'StudentController@update')->name('studentUpdate');
+        Route::get('/show/{id}', 'StudentController@show')->name('studentShow');
         Route::get('/archive', 'StudentController@archive')->name('studentArchive');
         Route::get('/waiting', 'StudentController@waiting')->name('studentWaiting');
+        Route::get('/active', 'StudentController@active')->name('studentActive');
         Route::get('/active', 'StudentController@active')->name('studentActive');
         Route::get('/work', 'StudentController@work')->name('studentWork');
         Route::post('/work/store', 'StudentController@workStore')->name('studentWorkStore');

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\EventUser;
+use App\Models\Group;
+use App\Models\GroupStudent;
 use App\Models\PC;
 use App\Models\PU;
 use App\Models\PUR;
@@ -13,10 +16,6 @@ use Spatie\Permission\Models\Role;
 
 class StudentController extends Controller
 {
-    // 1. add new student (who add this student)
-    // 2. give placement test (take result)
-    // 3. add probniy lesson or add group
-    // 4.
     public function index(Request $request)
     {
         $students = User::select(
@@ -66,7 +65,11 @@ class StudentController extends Controller
             'is_payment' => ($request->status) ? 1 : 0,
         ]);
         $student->assignRole([$role->id]);
-        $student->events()->attach($request->event_id, ['change_user_id' => auth()->user()->id]);
+        EventUser::create([
+            'user_id' => $student->id,
+            'change_user_id' => auth()->user()->id,
+            'event_id' => $request->event_id,
+        ]);
         if ($request->pc_id)
             PU::create([
                 'user_id' => $student->id,
@@ -86,12 +89,77 @@ class StudentController extends Controller
         }
     }
 
+    public function show($id){
+        $student = User::find($id);
+        return view('student.show',[
+            'student' => $student,
+        ]);
+    }
+
+    public function edit($id){
+        $events = Event::where('status', 1)->get()->pluck('name', 'id');
+        $pcs = PC::where('status', 1)->get()->pluck('name', 'id');
+        $groups = Group::where('status', 1)->get()->pluck('name', 'id');
+        $student = User::find($id);
+        return view('student.edit',[
+            'student' => $student,
+            'events' => $events,
+            'pcs' => $pcs,
+            'groups' => $groups,
+        ]);
+    }
+
+    public function update(Request $request, $id){
+        $student = User::find($id);
+        if ($request->pc_id){
+            PU::create([
+                'user_id' => $student->id,
+                'p_c_id' => $request->pc_id,
+                'attach_user_id' => auth()->user()->id,
+                'status' => 1,
+            ]);
+        }
+
+        if ($request->group_id){
+            GroupStudent::create([
+                'group_id' => $request->group_id,
+                'student_id' => $student->id,
+                'status' => 1,
+            ]);
+        }
+
+        if($request->event_id){
+            EventUser::create([
+                'user_id' => $student->id,
+                'change_user_id' => auth()->user()->id,
+                'event_id' => $request->event_id,
+            ]);
+        }
+
+        $student->update([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'status' => $request->status,
+            'phone' => $request->phone,
+        ]);
+        if ($request->status == 0) {
+            return redirect()->route('studentArchive')->with('success', 'Student archived successfully');
+        } else if ($request->status == 1) {
+            return redirect()->route('studentWaiting')->with('success', 'Student waiting successfully');
+        } else if ($request->status == 2) {
+            return redirect()->route('studentActive')->with('success', 'Student active successfully');
+        }else if($request->status == 3){
+            // student all
+        } else {
+            return back();
+        }
+    }
     public function waiting()
     {
-        $events = Event::where('status', 1)->get();
         $students = User::select(
             'users.id as id',
             'users.name as name',
+            'users.surname as surname',
             'users.phone as phone',
             'users.status as status',
         )
@@ -104,10 +172,28 @@ class StudentController extends Controller
             ->get();
         return view('student.waiting', [
             'students' => $students,
-            'events' => $events,
         ]);
     }
 
+    public function active(){
+        $students = User::select(
+            'users.id as id',
+            'users.name as name',
+            'users.surname as surname',
+            'users.phone as phone',
+            'users.status as status',
+        )
+            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
+            ->where('roles.name', 'Student')
+            ->where('model_has_roles.model_type', User::class)
+            ->where('users.status', 2)
+            ->latest('users.updated_at')
+            ->get();
+        return view('student.active', [
+            'students' => $students,
+        ]);
+    }
     public function work(){
         $pu = PU::where('user_id',auth()->user()->id)->where('status',1)->latest()->first();
         $pur = PU::where('status',2)
@@ -138,7 +224,7 @@ class StudentController extends Controller
     }
 
     public function result($id){
-        $pu = PU::where('id',$id)->where('user_id',auth()->user()->id)->first();
+        $pu = PU::where('id',$id)->first();
         return view('student.result',[
             'pu' => $pu,
         ]);

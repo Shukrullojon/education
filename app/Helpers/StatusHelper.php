@@ -15,9 +15,10 @@ class StatusHelper
     }
 
     public static $studentStatus = [
-        '0' => '📦 Archive',
         '1' => '⏳ Waiting',
-        '2' => '✅ Active',
+        '2' => '✅Active',
+        '3' => '👨‍🎓 All',
+        '0' => '📦 Archive',
     ];
 
     public static function studentStatusGet($index)

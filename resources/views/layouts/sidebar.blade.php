@@ -162,7 +162,7 @@
             </div>
 
             <div data-kt-menu-trigger="click"
-                 class="menu-item {{ (Request::is('student*')) ? 'here show' : '' }} menu-accordion">
+                 class="menu-item {{ (Request::is('student*') or Request::is('event*')) ? 'here show' : '' }} menu-accordion">
                 <span class="menu-link">
 										<span class="menu-icon">
 											<span class="svg-icon svg-icon-2">
@@ -188,7 +188,7 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Add</span>
+                            <span class="menu-title">➕ Add</span>
                         </a>
                     </div>
 
@@ -197,16 +197,16 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Waiting</span>
+                            <span class="menu-title">⏳ Waiting</span>
                         </a>
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link " href="">
+                        <a class="menu-link {{ Request::is('student/active') ? 'active' : '' }}" href="{{ route('studentActive') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Active</span>
+                            <span class="menu-title">✅ Active</span>
                         </a>
                     </div>
 
@@ -216,7 +216,7 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">All</span>
+                            <span class="menu-title">👨‍🎓 All</span>
                         </a>
                     </div>
 
@@ -225,7 +225,16 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Arxive</span>
+                            <span class="menu-title">📦 Arxive</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link {{ Request::is('event*') ? 'active' : '' }}" href="{{ route('event.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">✨ Event</span>
                         </a>
                     </div>
                 </div>

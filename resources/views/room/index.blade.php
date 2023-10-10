@@ -33,7 +33,7 @@
                     <td>{{ $room->status }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('room.show',$room->id) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('room.edit',$room->id) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('room.edit',$room->id) }}">Edit</a>7
                         {!! Form::open(['method' => 'DELETE','route' => ['room.destroy', $room->id],'style'=>'display:inline']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}

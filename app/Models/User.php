@@ -32,13 +32,20 @@ class User extends Authenticatable
         return $this->belongsTo(User::class,'reception_id','id');
     }
 
+    public function groupList(){
+        return $this->hasOne(GroupStudent::class,'student_id','id')->orderByDesc('id');
+    }
     public function event(){
         return $this->hasOne(EventUser::class,'user_id','id')->orderByDesc('id');
     }
 
     public function events()
     {
-        return $this->belongsToMany(Event::class);
+        return $this->hasMany(EventUser::class);
+    }
+
+    public function pu(){
+        return $this->hasMany(PU::class,'user_id','id');
     }
 
     protected $hidden = [
