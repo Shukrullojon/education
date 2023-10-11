@@ -19,7 +19,7 @@
         @endif
 
 
-        <table class="table table-bordered">
+        <table class="table table-bordered table-row-dashed fs-6 gy-3" id="kt_table_widget_5_table">
             <tr>
                 <th>Name</th>
                 <th width="280px">Action</th>

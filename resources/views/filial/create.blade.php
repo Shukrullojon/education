@@ -29,29 +29,29 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                    <strong>Name:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
+                    {!! Form::text('name', null, ['placeholder' => 'Name','required' => true, 'maxlength'=> 100,'class' => 'form-control']) !!}
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Address:</strong>
-                    {!! Form::text('address', null, array('placeholder' => 'Address','class' => 'form-control')) !!}
+                    <strong>Address:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
+                    {!! Form::text('address', null, ['placeholder' => 'Address', 'required'=>true,'maxlength'=> 100,'class' => 'form-control']) !!}
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Phone:</strong>
-                    {!! Form::text('phone', null, array('placeholder' => 'Phone','class' => 'form-control')) !!}
+                    <strong>Phone:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
+                    {!! Form::text('phone', null, ['id' => 'phone','placeholder' => "(XX)XXX-XX-XX", 'required'=>true,'maxlength'=> 13, 'class' => 'form-control']) !!}
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Status:</strong>
-                    {!! Form::text('status', null, array('placeholder' => 'Status','class' => 'form-control')) !!}
+                    <strong>Status:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
+                    {!! Form::select('status', \App\Helpers\StatusHelper::$filialStatus,null, ['required'=>true,'class' => 'form-control']) !!}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -62,4 +62,11 @@
         {!! Form::close() !!}
     </div>
 
+@endsection
+
+@section('scripts')
+    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <script>
+        $('#phone').inputmask("(99)999-99-99");
+    </script>
 @endsection

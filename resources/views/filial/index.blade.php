@@ -19,7 +19,7 @@
         @endif
 
 
-        <table class="table table-bordered">
+         <table class="table table-bordered table-row-dashed fs-6 gy-3" id="kt_table_widget_5_table">
             <tr>
                 <th>Name</th>
                 <th>Address</th>
@@ -31,8 +31,8 @@
                 <tr>
                     <td>{{ $filial->name }}</td>
                     <td>{{ $filial->address }}</td>
-                    <td>{{ $filial->phone }}</td>
-                    <td>{{ $filial->status }}</td>
+                    <td>{{ \App\Helpers\MaskHelper::changePhoneMask($filial->phone) }}</td>
+                    <td>{{ \App\Helpers\StatusHelper::filialStatusGet($filial->status) }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('filial.show',$filial->id) }}">Show</a>
                         <a class="btn btn-primary" href="{{ route('filial.edit',$filial->id) }}">Edit</a>

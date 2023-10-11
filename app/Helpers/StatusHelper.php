@@ -25,4 +25,14 @@ class StatusHelper
     {
         return self::$studentStatus[$index] ?: 'Undefined';
     }
+
+    public static $filialStatus = [
+        '1' => '✅ Active',
+        '0' => '📦 Archive',
+    ];
+
+    public static function filialStatusGet($index)
+    {
+        return self::$taskStatus[$index] ?: 'Undefined';
+    }
 }
