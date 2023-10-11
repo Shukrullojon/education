@@ -13,7 +13,7 @@ class PTHelper
 
     public static function answerGet($index)
     {
-        return self::$answers[$index] ?: 'Undefined';
+        return self::$answers[$index] ?? 'Undefined';
     }
 
     public static $placementStatus = [

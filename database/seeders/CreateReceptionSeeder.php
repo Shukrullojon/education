@@ -23,7 +23,8 @@ class CreateReceptionSeeder extends Seeder
                 'name' => 'Reception '.$i,
                 'email' => "reception".$i."@gmail.com",
                 'phone' => '91123456'.$i,
-                'password' => bcrypt("reception".$i)
+                'password' => bcrypt("reception".$i),
+                'status' => rand(0,3),
             ]);
             $user->assignRole([$role->id]);
         }

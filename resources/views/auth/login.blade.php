@@ -4,6 +4,22 @@
     <div class="d-flex flex-column flex-lg-row-fluid py-10">
         <div class="d-flex flex-center flex-column flex-column-fluid">
             <!--begin::Wrapper-->
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if ($message = Session::get('error-info'))
+                <div class="alert alert-danger">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
+
             <div class="w-lg-500px p-10 p-lg-15 mx-auto">
                 <!--begin::Form-->
                 <form method="POST" action="{{ route('login') }}"  class="form w-100" novalidate="novalidate">

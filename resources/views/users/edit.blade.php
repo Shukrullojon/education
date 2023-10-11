@@ -27,42 +27,62 @@
 
         {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Name:</strong>
+                    <strong>Name:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
                     {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Phone:</strong>
-                    {!! Form::text('phone', null, array('placeholder' => 'Phone','class' => 'form-control')) !!}
+                    <strong>Surname:</strong>{!! Form::label('*',"*",['style'=>"color:red"]) !!}
+                    {!! Form::text('surname', null, ['placeholder' => 'Name','required'=>true,'class' => 'form-control']) !!}
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Email:</strong>
+                    <strong>Phone:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
+                    {!! Form::text('phone', null, ['id' => 'phone','placeholder' => "(XX)XXX-XX-XX", 'required'=>true,'maxlength'=> 13, 'class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <strong>Email:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
                     {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Password:</strong>
+                    <strong>Password:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
                     {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Confirm Password:</strong>
+                    <strong>Confirm Password:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
                     {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Role:</strong>
+                    <strong>Role:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
                     {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
                 </div>
             </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <strong>Status:</strong> {!! Form::label('*',"*",['style'=>"color:red"]) !!}
+                    {!! Form::select('status',\App\Helpers\StatusHelper::$adminStatus, null, ['id' => 'status','required'=>true, 'class' => 'form-control']) !!}
+                </div>
+            </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <br>
                 <button type="submit" class="btn btn-primary form-control">Submit</button>
@@ -70,5 +90,11 @@
         </div>
         {!! Form::close() !!}
     </div>
+@endsection
 
+@section('scripts')
+    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <script>
+        $('#phone').inputmask("(99)999-99-99");
+    </script>
 @endsection

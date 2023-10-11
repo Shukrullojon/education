@@ -11,6 +11,6 @@ class EventHelper
 
     public static function eventStatusGet($index)
     {
-        return self::$eventStatus[$index] ?: 'Undefined';
+        return self::$eventStatus[$index] ?? 'Undefined';
     }
 }

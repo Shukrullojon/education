@@ -11,7 +11,7 @@ class StatusHelper
 
     public static function taskStatusGet($index)
     {
-        return self::$taskStatus[$index] ?: 'Undefined';
+        return self::$taskStatus[$index] ?? 'Undefined';
     }
 
     public static $studentStatus = [
@@ -23,7 +23,19 @@ class StatusHelper
 
     public static function studentStatusGet($index)
     {
-        return self::$studentStatus[$index] ?: 'Undefined';
+        return self::$studentStatus[$index] ?? 'Undefined';
+    }
+
+    public static $adminStatus = [
+        '0' => '📦 Archive',
+        '1' => '✅ Active',
+        '2' => '🙅‍♂️ Otpuska',
+        '3' => '🤕 Ill',
+    ];
+
+    public static function adminStatusGet($index)
+    {
+        return self::$adminStatus[$index] ?? 'Undefined';
     }
 
     public static $filialStatus = [
@@ -33,6 +45,6 @@ class StatusHelper
 
     public static function filialStatusGet($index)
     {
-        return self::$taskStatus[$index] ?: 'Undefined';
+        return self::$taskStatus[$index] ?? 'Undefined';
     }
 }
