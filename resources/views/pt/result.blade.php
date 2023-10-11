@@ -28,6 +28,7 @@
                 <th><b>Correct</b></th>
                 <th><b>Incorrect</b></th>
                 <th><b>Percentage</b></th>
+                <th><b>Time</b></th>
                 <th width="280px"><b>Action</b></th>
             </tr>
             @foreach ($pus as $key => $p)
@@ -54,6 +55,7 @@
                     <td>{{ $correct }}</td>
                     <td>{{ $incorrect }}</td>
                     <td>{{ $percentage }} %</td>
+                    <td>{{ $p->pc->minute }} @if($p->spend_time) ({{ $p->spend_time }}) @endif min</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('studentWorkResult',$p->id) }}">Show</a>
                     </td>

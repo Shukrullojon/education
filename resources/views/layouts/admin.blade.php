@@ -244,9 +244,10 @@
 <script src="{{ asset('demo/dist/assets/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
 <script src="{{ asset('demo/dist/assets/js/custom/utilities/modals/create-app.js')}}"></script>
 <script src="{{ asset('demo/dist/assets/js/custom/utilities/modals/users-search.js')}}"></script>
-<script>
+<script src="{{ asset('jquery/jquery.min.js')}}"></script>
 
-</script>
+@yield('scripts')
+
 </body>
 <!--end::Body-->
 </html>

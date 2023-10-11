@@ -4,7 +4,7 @@
     <div class="card pt-2 mb-6 mb-xl-9" style="margin: 10px; padding: 10px">
         <div class="card-header border-0">
             <div class="card-title">
-                <h2>Students All</h2>
+                <h2>Students Archive</h2>
             </div>
         </div>
 
@@ -43,3 +43,5 @@
         </div>
     </div>
 @endsection
+
+

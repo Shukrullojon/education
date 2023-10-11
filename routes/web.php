@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::patch('/update/{id}', 'StudentController@update')->name('studentUpdate');
         Route::get('/show/{id}', 'StudentController@show')->name('studentShow');
         Route::get('/work', 'StudentController@work')->name('studentWork');
+        Route::get('/start/{id}','StudentController@start')->name('studentPTStart');
         Route::post('/work/store', 'StudentController@workStore')->name('studentWorkStore');
         Route::get('/work/result/{id}', 'StudentController@result')->name('studentWorkResult');
     });

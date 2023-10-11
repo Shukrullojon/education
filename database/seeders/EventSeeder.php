@@ -30,6 +30,10 @@ class EventSeeder extends Seeder
                 'name' => 'First Lesson',
                 'status' => 1,
             ],
+            [
+                'name' => 'Attend',
+                'status' => 1,
+            ],
         ];
         foreach ($events as $event){
             Event::create($event);

@@ -16,6 +16,7 @@
                                         <td>Number</td>
                                         <td>Correct</td>
                                         <td>Incorrect</td>
+                                        <td>Time</td>
                                         <td></td>
                                     </tr>
                                     @foreach($pur as $p)
@@ -37,6 +38,7 @@
                                             <td>{{ $number }}</td>
                                             <td>{{ $correct }}</td>
                                             <td>{{ $incorrect }}</td>
+                                            <td>{{ $p->pc->minute }} ({{ $p->spend_time }}) min</td>
                                             <td>
                                                 <a href="{{ route('studentWorkResult',$p->id) }}">Show</a>
                                             </td>
@@ -49,12 +51,29 @@
                     </div>
                 @endif
 
-                @if($pu)
+                @if(!empty($pu) and $pu->status == 1)
+                    <div class="card card-xl-stretch mb-5 mb-xl-8">
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bolder fs-3 mb-1">Test: {{ $pu->pc->name }}</span>
+                                <span class="card-label fw-bolder fs-3 mb-1">Minute: {{ $pu->pc->minute }}</span>
+                                <span class="card-label fw-bolder fs-3 mb-1"><a
+                                        href="{{ route('studentPTStart',$pu->id) }}"
+                                        class="btn btn-success">Start</a></span>
+                            </h3>
+                        </div>
+                    </div>
+                @endif
+
+                @if(!empty($pu) and $pu->status == 2)
                     <div class="card card-xl-stretch mb-5 mb-xl-8">
                         <!--begin::Header-->
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="card-label fw-bolder fs-3 mb-1">{{ $pu->pc->name }}</span>
+                                <span class="card-label fw-bolder fs-3 mb-1">Time: <p style="display: inline"
+                                                                                      second="{{ $pu->pc->minute*60 }}"
+                                                                                      id="time_minute">{{ $pu->pc->minute }}:00</p> minute</span>
                             </h3>
                         </div>
                         <div class="card-body py-3">
@@ -63,6 +82,7 @@
                                     <tbody>
                                     <form method="POST" action="{{ route('studentWorkStore') }}">
                                         @csrf
+                                        <input type="hidden" id="spend_time" name="spend_time" value="">
                                         <input type="hidden" name="p_u_id" value="{{ $pu->id }}">
                                         @foreach($pu->pc->ptRand as $key => $t)
                                             <tr>
@@ -103,22 +123,32 @@
                                         <br>
                                         <tr>
                                             <td>
-                                                <input type="submit" class="form-control">
+                                                <button type="submit" class="form-control btn btn-success">Finish
+                                                </button>
                                             </td>
                                         </tr>
                                     </form>
                                     </tbody>
-                                    <!--end::Table body-->
                                 </table>
-                                <!--end::Table-->
                             </div>
-                            <!--end::Table container-->
                         </div>
-                        <!--begin::Body-->
                     </div>
                 @endif
-                <!--end::Tables Widget 9-->
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        setInterval(function () {
+            var time_minute = parseInt($("#time_minute").attr('second'));
+            time_minute--;
+            var minut = parseInt(time_minute / 60);
+            var sec = time_minute - minut * 60;
+            $("#time_minute").text(minut + ':' + sec);
+            $("#spend_time").val(time_minute);
+            $("#time_minute").attr('second', time_minute);
+        }, 1000);
+    </script>
 @endsection

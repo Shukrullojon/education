@@ -23,7 +23,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 1',
             'email' => 'student1@gmail.com',
             'phone' => '991234567',
-            'password' => bcrypt('student1')
+            'password' => bcrypt('student1'),
+            'status' => rand(0,3),
         ]);
         $user->assignRole([$role->id]);
 
@@ -31,7 +32,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 2',
             'email' => 'student2@gmail.com',
             'phone' => '991234568',
-            'password' => bcrypt('student2')
+            'password' => bcrypt('student2'),
+            'status' => rand(0,3),
         ]);
         $user1->assignRole([$role->id]);
 
@@ -39,7 +41,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 3',
             'email' => 'student3@gmail.com',
             'phone' => '991234569',
-            'password' => bcrypt('student3')
+            'password' => bcrypt('student3'),
+            'status' => rand(0,3),
         ]);
         $user2->assignRole([$role->id]);
 
@@ -47,7 +50,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 4',
             'email' => 'student4@gmail.com',
             'phone' => '991234570',
-            'password' => bcrypt('student4')
+            'password' => bcrypt('student4'),
+            'status' => rand(0,3),
         ]);
         $user3->assignRole([$role->id]);
 
@@ -55,7 +59,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 5',
             'email' => 'student5@gmail.com',
             'phone' => '991234571',
-            'password' => bcrypt('student5')
+            'password' => bcrypt('student5'),
+            'status' => rand(0,3),
         ]);
         $user4->assignRole([$role->id]);
 
@@ -63,7 +68,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 6',
             'email' => 'student6@gmail.com',
             'phone' => '991234572',
-            'password' => bcrypt('student6')
+            'password' => bcrypt('student6'),
+            'status' => rand(0,3),
         ]);
         $user5->assignRole([$role->id]);
 
@@ -71,7 +77,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 7',
             'email' => 'student7@gmail.com',
             'phone' => '991234573',
-            'password' => bcrypt('student7')
+            'password' => bcrypt('student7'),
+            'status' => rand(0,3),
         ]);
         $user6->assignRole([$role->id]);
 
@@ -79,7 +86,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 8',
             'email' => 'student8@gmail.com',
             'phone' => '991234574',
-            'password' => bcrypt('student8')
+            'password' => bcrypt('student8'),
+            'status' => rand(0,3),
         ]);
         $user7->assignRole([$role->id]);
 
@@ -87,7 +95,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 9',
             'email' => 'student9@gmail.com',
             'phone' => '991234575',
-            'password' => bcrypt('student9')
+            'password' => bcrypt('student9'),
+            'status' => rand(0,3),
         ]);
         $user8->assignRole([$role->id]);
 
@@ -95,7 +104,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 10',
             'email' => 'student10@gmail.com',
             'phone' => '991234576',
-            'password' => bcrypt('student10')
+            'password' => bcrypt('student10'),
+            'status' => rand(0,3),
         ]);
         $user9->assignRole([$role->id]);
 
@@ -103,7 +113,8 @@ class CreateStudentSeeder extends Seeder
             'name' => 'STUDENT 11',
             'email' => 'student11@gmail.com',
             'phone' => '991234579',
-            'password' => bcrypt('student11')
+            'password' => bcrypt('student11'),
+            'status' => rand(0,3),
         ]);
         $user10->assignRole([$role->id]);
     }

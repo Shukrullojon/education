@@ -130,7 +130,7 @@ class StudentController extends Controller
             'surname' => 'required|min:3|max:50',
             'email' => 'nullable|email',
             'status' => 'required|in:0,1,2,3',
-            'phone' => 'required|unique:users,phone',
+            'phone' => 'required|unique:users,phone,'.$id,
             'event_id' => 'required|exists:events,id',
         ]);
         $student = User::find($id);
@@ -217,9 +217,29 @@ class StudentController extends Controller
             'students' => $students,
         ]);
     }
+
+    public function archive(){
+        $students = User::select(
+            'users.id as id',
+            'users.name as name',
+            'users.surname as surname',
+            'users.phone as phone',
+            'users.status as status',
+        )
+            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
+            ->where('roles.name', 'Student')
+            ->where('model_has_roles.model_type', User::class)
+            ->where('users.status', 0)
+            ->latest('users.updated_at')
+            ->get();
+        return view('student.archive',[
+            'students' => $students,
+        ]);
+    }
     public function work(){
-        $pu = PU::where('user_id',auth()->user()->id)->where('status',1)->latest()->first();
-        $pur = PU::where('status',2)
+        $pu = PU::where('user_id',auth()->user()->id)->where('status','!=',3)->latest()->first();
+        $pur = PU::where('status',3)
             ->where('user_id',auth()->user()->id)
             ->latest()
             ->get();
@@ -229,12 +249,23 @@ class StudentController extends Controller
         ]);
     }
 
+    public function start($id){
+        $pu = PU::where('id',$id)->first();
+        $pu->update([
+            'status' => 2,
+            'start_time' => empty($pu->start_time) ? date('Y-m-d H:i:s') : $pu->start_time
+        ]);
+        return redirect()->route('studentWork');
+    }
+
     public function workStore(Request $request){
         $this->validate($request, [
             'p_u_id' => 'required',
         ]);
-        PU::where('id',$request->p_u_id)->update([
-            'status' => 2,
+        $pu = PU::where('id',$request->p_u_id)->first();
+        $pu->update([
+            'status' => 3,
+            'spend_time' => (int) ($pu->pc->minute * 60 - $request->spend_time) / 60
         ]);
         foreach ($request->test as $key => $t){
             PUR::create([

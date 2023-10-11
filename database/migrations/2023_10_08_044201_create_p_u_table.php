@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('p_c_id');
             $table->unsignedBigInteger('attach_user_id');
+            $table->tinyInteger('spend_time')->nullable();
+            $table->timestamp('start_time')->nullable();
             $table->tinyInteger('status')->comment('0 -> give, 1-> working, 2 -> finishing');
             $table->timestamps();
         });

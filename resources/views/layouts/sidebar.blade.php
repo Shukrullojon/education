@@ -221,7 +221,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link" href="">
+                        <a class="menu-link {{ Request::is('student/archive') ? 'active' : '' }}" href="{{ route('studentArchive') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -266,7 +266,7 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Results</span>
+                            <span class="menu-title">📜 Results</span>
                         </a>
                     </div>
 
@@ -275,7 +275,7 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Category</span>
+                            <span class="menu-title">✨ Category</span>
                         </a>
                     </div>
                     <div class="menu-item">
@@ -283,7 +283,7 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Test</span>
+                            <span class="menu-title">📚 Test</span>
                         </a>
                     </div>
                 </div>

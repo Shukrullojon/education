@@ -126,7 +126,7 @@
                             <td>{{ $correct }}</td>
                             <td>{{ $incorrect }}</td>
                             <td>{{ $percentage }} %</td>
-                            <td>40(20)</td>
+                            <td>{{ $p->pc->minute }} ({{ $p->spend_time }}) min</td>
                             <td>
                                 <a href="{{ route('studentWorkResult',$p->id) }}">Show</a>
                             </td>

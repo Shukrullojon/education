@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $p_c_id
  * @property integer $attach_user_id
  * @property integer $status
+ * @property timestamp $start_time
+ * @property integer $spend_time
  * */
 
 class PU extends Model
@@ -23,6 +25,8 @@ class PU extends Model
         'p_c_id',
         'attach_user_id',
         'status',
+        'start_time',
+        'spend_time',
     ];
 
     public function pc(){
