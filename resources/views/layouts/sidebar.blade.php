@@ -94,33 +94,30 @@
             <div data-kt-menu-trigger="click"
                  class="menu-item {{ (Request::is('cource*') or Request::is('cource*')) ? 'here show' : '' }} menu-accordion">
                 <span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Cources</span>
-										<span class="menu-arrow"></span>
-									</span>
+                    <i class="fa fa-database" style="margin-right: 7px"></i>
+                    <span class="menu-title">Cources</span>
+                    <span class="menu-arrow"></span>
+				</span>
                 <div class="menu-sub menu-sub-accordion menu-active-bg">
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('cource*') ? 'active' : '' }}"
+                        <a class="menu-link {{ Request::is('cource/create') ? 'active' : '' }}"
+                           href="{{ route('cource.create') }}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+                            <span class="menu-title"><i class="fa fa-plus"
+                                                        style="margin-right: 7px"></i>Add</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link {{ (Request::is('cource*') and !Request::is('cource/create')) ? 'active' : '' }}"
                            href="{{ route('cource.index') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-                            <span class="menu-title">Cource</span>
+                            <span class="menu-title"><i class="fa fa-database"
+                                                        style="margin-right: 7px"></i> Cource</span>
                         </a>
                     </div>
                 </div>
@@ -184,7 +181,8 @@
 									</span>
                 <div class="menu-sub menu-sub-accordion menu-active-bg">
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('student/create') ? 'active' : '' }}" href="{{ route('studentCreate') }}">
+                        <a class="menu-link {{ Request::is('student/create') ? 'active' : '' }}"
+                           href="{{ route('studentCreate') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -193,7 +191,8 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('student/waiting') ? 'active' : '' }}" href="{{ route('studentWaiting') }}">
+                        <a class="menu-link {{ Request::is('student/waiting') ? 'active' : '' }}"
+                           href="{{ route('studentWaiting') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -202,7 +201,8 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('student/active') ? 'active' : '' }}" href="{{ route('studentActive') }}">
+                        <a class="menu-link {{ Request::is('student/active') ? 'active' : '' }}"
+                           href="{{ route('studentActive') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -221,7 +221,8 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('student/archive') ? 'active' : '' }}" href="{{ route('studentArchive') }}">
+                        <a class="menu-link {{ Request::is('student/archive') ? 'active' : '' }}"
+                           href="{{ route('studentArchive') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -230,7 +231,8 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('event*') ? 'active' : '' }}" href="{{ route('event.index') }}">
+                        <a class="menu-link {{ Request::is('event*') ? 'active' : '' }}"
+                           href="{{ route('event.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -240,7 +242,8 @@
                 </div>
             </div>
 
-            <div data-kt-menu-trigger="click" class="menu-item {{ (Request::is('testresults*') or Request::is('pc*') or Request::is('pt*')) ? 'here show' : '' }} menu-accordion">
+            <div data-kt-menu-trigger="click"
+                 class="menu-item {{ (Request::is('testresults*') or Request::is('pc*') or Request::is('pt*')) ? 'here show' : '' }} menu-accordion">
                 <span class="menu-link">
                     <span class="menu-icon">
                         <span class="svg-icon svg-icon-2">
@@ -262,7 +265,8 @@
                 </span>
                 <div class="menu-sub menu-sub-accordion menu-active-bg">
                     <div class="menu-item">
-                        <a class="menu-link {{ Request::is('testresults/all') ? 'active' : '' }}" href="{{ route('ptResult') }}">
+                        <a class="menu-link {{ Request::is('testresults/all') ? 'active' : '' }}"
+                           href="{{ route('ptResult') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -453,7 +457,8 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title"><i class="fa fa-user-lock" style="margin-right: 7px"></i>Roles</span>
+                            <span class="menu-title"><i class="fa fa-user-lock"
+                                                        style="margin-right: 7px"></i>Roles</span>
                         </a>
                     </div>
 
@@ -463,7 +468,8 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title"><i class="fa fa-key" style="margin-right: 7px"></i>Permissions</span>
+                            <span class="menu-title"><i class="fa fa-key"
+                                                        style="margin-right: 7px"></i>Permissions</span>
                         </a>
                     </div>
 
@@ -473,7 +479,8 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title"><i class="fa fa-building" style="margin-right: 7px"></i> Filial</span>
+                            <span class="menu-title"><i class="fa fa-building"
+                                                        style="margin-right: 7px"></i> Filial</span>
                         </a>
                     </div>
 

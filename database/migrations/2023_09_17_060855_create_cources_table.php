@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('time')->nullable();
             $table->integer('during')->nullable();
             $table->text('info')->nullable();
+            $table->bigInteger('price');
             $table->unsignedBigInteger('filial_id');
             $table->tinyInteger('status');
             $table->timestamps();

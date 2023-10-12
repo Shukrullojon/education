@@ -8,6 +8,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * @property String $name
+ * @property String $surname
+ * @property String $email
+ * @property String $phone
+ * @property String $password
+ * @property integer $reception_id
+ * @property integer $is_payment
+ * @property integer $status
+ * @property integer $salary
+ * @property integer $kpi
+ * @property integer $hourly
+ * @property integer $add_student
+ * @property integer $active_student
+ * */
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
@@ -26,6 +42,11 @@ class User extends Authenticatable
         'reception_id',
         'is_payment',
         'status',
+        'salary',
+        'kpi',
+        'hourly',
+        'add_student',
+        'active_student',
     ];
 
     public function reception(){

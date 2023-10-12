@@ -36,9 +36,12 @@ class CourceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'filial_id' => 'required',
-            'status' => 'required',
+            'name' => 'required|string',
+            'time' => 'required|numeric',
+            'during' => 'required|numeric',
+            'price' => 'required|numeric',
+            'filial_id' => 'required|exists:filials,id',
+            'status' => 'required|in:0,1',
         ]);
         Cource::create($request->all());
         return redirect()->route('cource.index')->with('success','Cource created successfully');
@@ -72,9 +75,12 @@ class CourceController extends Controller
     public function update(Request $request, Cource $cource)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'filial_id' => 'required',
-            'status' => 'required',
+            'name' => 'required|string',
+            'time' => 'required|numeric',
+            'during' => 'required|numeric',
+            'price' => 'required|numeric',
+            'filial_id' => 'required|exists:filials,id',
+            'status' => 'required|in:0,1',
         ]);
         $cource->update($request->all());
         return redirect()->route('cource.index')->with('success','Cource updated successfully');

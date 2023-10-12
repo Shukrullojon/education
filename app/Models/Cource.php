@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property String $info
  * @property int $filial_id
  * @property int $status
+ * @property int $price
  * */
 class Cource extends Model
 {
@@ -24,6 +25,7 @@ class Cource extends Model
         'time',
         'during',
         'info',
+        'price',
         'filial_id',
         'status',
     ];

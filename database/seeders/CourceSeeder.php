@@ -22,6 +22,7 @@ class CourceSeeder extends Seeder
                 'info' => 'Cource',
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
                 'status' => 1,
+                'price' => rand(500000,1000000),
             ],
             [
                 'name' => 'Английский язык + IELTS за 4 месяцев',
@@ -30,6 +31,7 @@ class CourceSeeder extends Seeder
                 'info' => 'Cource',
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
                 'status' => 1,
+                'price' => rand(500000,1000000),
             ],
             [
                 'name' => 'Английский язык + IELTS за 8 месяцев',
@@ -38,6 +40,7 @@ class CourceSeeder extends Seeder
                 'info' => 'Cource',
                 'filial_id' => Filial::select('id')->inRandomOrder()->first()->id,
                 'status' => 1,
+                'price' => rand(500000,1000000),
             ],
         ];
         foreach ($data as $d){

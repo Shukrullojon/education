@@ -47,4 +47,14 @@ class StatusHelper
     {
         return self::$taskStatus[$index] ?? 'Undefined';
     }
+
+    public static $courceStatus = [
+        '1' => '✅ Active',
+        '0' => '📦 Archive',
+    ];
+
+    public static function courceStatusGet($index)
+    {
+        return self::$taskStatus[$index] ?? 'Undefined';
+    }
 }
