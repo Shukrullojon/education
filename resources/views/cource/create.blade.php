@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <label
                         for="time"><strong>Time(min):</strong></label>{!! Form::label('time',"*",['style'=>"color:red"]) !!}
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <label
                         for="during"><strong>During(month):</strong></label>{!! Form::label('during',"*",['style'=>"color:red"]) !!}
@@ -59,12 +59,23 @@
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <label
                         for="price"><strong>Price:</strong></label>{!! Form::label('price',"*",['style'=>"color:red"]) !!}
                     {!! Form::text('price', null, ['autocomplete'=>'off','placeholder' => 'Price','id'=>'price','class' => 'form-control']) !!}
                     @error('price')
+                    <p style="color: red" class="error">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label
+                        for="one_price"><strong>One Price:</strong></label>{!! Form::label('one_price',"*",['style'=>"color:red"]) !!}
+                    {!! Form::text('one_price', null, ['autocomplete'=>'off','placeholder' => 'One Price','id'=>'one_price','class' => 'form-control']) !!}
+                    @error('one_price')
                     <p style="color: red" class="error">{{ $message }}</p>
                     @enderror
                 </div>

@@ -9,6 +9,7 @@
                 <th>During</th>
                 <th>Info</th>
                 <th>Price</th>
+                <th>One Price</th>
                 <th>Filial</th>
                 <th>Status</th>
             </tr>
@@ -18,6 +19,7 @@
                 <td>{{ $cource->during }} month</td>
                 <td>{{ $cource->info }}</td>
                 <td>{{ number_format($cource->price,0,' ',' ') }}</td>
+                <td>{{ number_format($cource->one_price,0,' ',' ') }}</td>
                 <td>@if(!empty($cource->filial->name)) {{ $cource->filial->name }} @endif</td>
                 <td>{{ \App\Helpers\StatusHelper::courceStatusGet($cource->status) }}</td>
             </tr>

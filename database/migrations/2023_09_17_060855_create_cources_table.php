@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('during')->nullable();
             $table->text('info')->nullable();
             $table->bigInteger('price');
+            $table->bigInteger('one_price');
             $table->unsignedBigInteger('filial_id');
             $table->tinyInteger('status');
             $table->timestamps();

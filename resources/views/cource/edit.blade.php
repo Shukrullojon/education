@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <label for="time"><strong>Time(min):</strong></label>{!! Form::label('time',"*",['style'=>"color:red"]) !!}
                     {!! Form::text('time', null, ['id'=>'time','autocomplete'=>'off','placeholder' => 'Time','class' => 'form-control']) !!}
@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <label for="during"><strong>During(month):</strong></label>{!! Form::label('during',"*",['style'=>"color:red"]) !!}
                     {!! Form::text('during', null, ['id'=>'during','autocomplete'=>'off','placeholder' => 'During','class' => 'form-control']) !!}
@@ -56,11 +56,21 @@
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <label for="price"><strong>Price:</strong></label>{!! Form::label('price',"*",['style'=>"color:red"]) !!}
                     {!! Form::text('price', null, ['id'=>'price','autocomplete'=>'off','placeholder' => 'Price','class' => 'form-control']) !!}
                     @error('price')
+                    <p style="color: red" class="error">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label for="one_price"><strong>One Price:</strong></label>{!! Form::label('one_price',"*",['style'=>"color:red"]) !!}
+                    {!! Form::text('one_price', null, ['id'=>'one_price','autocomplete'=>'off','placeholder' => 'One Price','class' => 'form-control']) !!}
+                    @error('one_price')
                     <p style="color: red" class="error">{{ $message }}</p>
                     @enderror
                 </div>

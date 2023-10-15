@@ -57,4 +57,14 @@ class StatusHelper
     {
         return self::$taskStatus[$index] ?? 'Undefined';
     }
+
+    public static $roomStatus = [
+        '1' => '✅ Active',
+        '0' => '📦 Archive',
+    ];
+
+    public static function roomStatusGet($index)
+    {
+        return self::$roomStatus[$index] ?? 'Undefined';
+    }
 }

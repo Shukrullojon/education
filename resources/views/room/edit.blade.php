@@ -26,24 +26,27 @@
 
         {!! Form::model($room, ['method' => 'PATCH','route' => ['room.update', $room->id]]) !!}
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
-                    <strong>Name:</strong>
+                    <label
+                        for="name"><strong>Name:</strong></label>{!! Form::label('name',"*",['style'=>"color:red"]) !!}
                     {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
-                    <strong>Filial:</strong>
+                    <label
+                        for="filial_id"><strong>Filial:</strong></label> {!! Form::label('filial_id',"*",['style'=>"color:red"]) !!}
                     {!! Form::select('filial_id', $filials,null, ['class' => 'form-control']) !!}
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
-                    <strong>Status:</strong>
-                    {!! Form::select('status', [1 => 'Active', 0=>'No Active'],null, ['class' => 'form-control']) !!}
+                    <label
+                        for="status"><strong>Status:</strong></label>{!! Form::label('status',"*",['style'=>"color:red"]) !!}
+                    {!! Form::select('status', \App\Helpers\StatusHelper::$roomStatus,null, ['class' => 'form-control']) !!}
                 </div>
             </div>
 

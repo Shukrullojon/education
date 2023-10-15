@@ -12,22 +12,7 @@
             <div data-kt-menu-trigger="click"
                  class="menu-item {{ (Request::is('home')) ? 'here show' : '' }} menu-accordion">
 									<span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
+										<i class="fa fa-home" style="margin-right: 7px"></i>
 										<span class="menu-title">Home</span>
 										<span class="menu-arrow"></span>
 									</span>
@@ -46,24 +31,8 @@
 
             <div data-kt-menu-trigger="click"
                  class="menu-item {{ (Request::is('room*') or Request::is('task-room*')) ? 'here show' : '' }} menu-accordion">
-                8
                 <span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
+										<i class="fa fa-inbox" style="margin-right: 7px"></i>
 										<span class="menu-title">Rooms</span>
 										<span class="menu-arrow"></span>
 									</span>
@@ -72,9 +41,10 @@
                         <a class="menu-link {{ Request::is('room*') ? 'active' : '' }}"
                            href="{{ route('room.index') }}">
 												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
+                                                    <span class="bullet bullet-dot"></span>
+
 												</span>
-                            <span class="menu-title">Room</span>
+                            <span class="menu-title"><i class="fa fa-inbox" style="margin-right: 7px"></i>Room</span>
                         </a>
                     </div>
 
@@ -84,7 +54,7 @@
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-                            <span class="menu-title">Task</span>
+                            <span class="menu-title"><i class="fa fa-tasks" style="margin-right: 7px"></i>Task</span>
                         </a>
                     </div>
 
@@ -126,22 +96,7 @@
             <div data-kt-menu-trigger="click"
                  class="menu-item {{ (Request::is('group*') or Request::is('group*')) ? 'here show' : '' }} menu-accordion">
                 <span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
+										<i class="fa fa-layer-group" style="margin-right: 7px"></i>
 										<span class="menu-title">Groups</span>
 										<span class="menu-arrow"></span>
 									</span>
@@ -161,21 +116,7 @@
             <div data-kt-menu-trigger="click"
                  class="menu-item {{ (Request::is('student*') or Request::is('event*')) ? 'here show' : '' }} menu-accordion">
                 <span class="menu-link">
-										<span class="menu-icon">
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
+										<i class="fa fa-user-graduate" style="margin-right: 7px"></i>
 										<span class="menu-title">Students</span>
 										<span class="menu-arrow"></span>
 									</span>
@@ -245,21 +186,7 @@
             <div data-kt-menu-trigger="click"
                  class="menu-item {{ (Request::is('testresults*') or Request::is('pc*') or Request::is('pt*')) ? 'here show' : '' }} menu-accordion">
                 <span class="menu-link">
-                    <span class="menu-icon">
-                        <span class="svg-icon svg-icon-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                 viewBox="0 0 24 24" fill="none">
-                                <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-                                <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                                <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                                <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </span>
+                    <i class="fa fa-question-circle" style="margin-right: 7px"></i>
                     <span class="menu-title">Placement</span>
                     <span class="menu-arrow"></span>
                 </span>
@@ -295,21 +222,7 @@
 
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                 <span class="menu-link">
-                    <span class="menu-icon">
-                        <span class="svg-icon svg-icon-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                 viewBox="0 0 24 24" fill="none">
-                                <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-                                <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                                <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                                <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </span>
+                    <i class="fa fa-donate" style="margin-right: 7px"></i>
                     <span class="menu-title">Salary</span>
                     <span class="menu-arrow"></span>
                 </span>
@@ -334,74 +247,10 @@
                 </div>
             </div>
 
-            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                <span class="menu-link">
-                    <span class="menu-icon">
-                        <span class="svg-icon svg-icon-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                 viewBox="0 0 24 24" fill="none">
-                                <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-                                <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                                <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                                <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                      fill="currentColor"/>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </span>
-                    <span class="menu-title">Calculate</span>
-                    <span class="menu-arrow"></span>
-                </span>
-                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                    <div class="menu-item">
-                        <a class="menu-link" href="">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Salary</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-item">
-                        <a class="menu-link " href="">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Additional</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-item">
-                        <a class="menu-link " href="">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Report</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
             <div data-kt-menu-trigger="click"
                  class="menu-item {{ (Request::is('task*') or Request::is('task*')) ? 'here show' : '' }} menu-accordion">
                 <span class="menu-link">
-										<span class="menu-icon">
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
+										<i class="fa fa-tasks" style="margin-right: 7px"></i>
 										<span class="menu-title">Tasks</span>
 										<span class="menu-arrow"></span>
 									</span>
@@ -421,22 +270,7 @@
             <div data-kt-menu-trigger="click"
                  class="menu-item {{ (Request::is('roles*') or Request::is('users*') or Request::is('permissions*') or Request::is('tags*') or Request::is('filial*')) ? 'here show' : '' }}  menu-accordion">
 									<span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                                          fill="currentColor"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
+										<i class="fa fa-cog" style="margin-right: 7px"></i>
 										<span class="menu-title">Settings</span>
 										<span class="menu-arrow"></span>
 									</span>

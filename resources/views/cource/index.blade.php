@@ -14,6 +14,7 @@
                 <th>During</th>
                 <th>Filial</th>
                 <th>Price</th>
+                <th>One Price</th>
                 <th>Status</th>
                 <th width="280px">Action</th>
             </tr>
@@ -24,6 +25,7 @@
                     <td>{{ $cource->during }} month</td>
                     <td>@if(!empty($cource->filial->name)) {{ $cource->filial->name }} @endif</td>
                     <td>{{ number_format($cource->price,0,' ',' ') }} UZS</td>
+                    <td>{{ number_format($cource->one_price,0,' ',' ') }} UZS</td>
                     <td>{{ \App\Helpers\StatusHelper::courceStatusGet($cource->status) }}</td>
                     <td>
                         <div class="btn-group">
