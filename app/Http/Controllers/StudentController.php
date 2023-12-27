@@ -13,9 +13,17 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use App\Services\UserService;
 
 class StudentController extends Controller
 {
+    public $service;
+
+    public function __construct(UserService $service)
+    {
+        $this->service = $service;
+    }
+
     public function all(Request $request)
     {
         $students = User::select(
@@ -50,6 +58,8 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+
+
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'surname' => 'required|min:3|max:50',
@@ -59,6 +69,7 @@ class StudentController extends Controller
             'event_id' => 'required|exists:events,id',
         ]);
         $role = Role::where('name', 'Student')->first();
+
         $student = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -68,6 +79,12 @@ class StudentController extends Controller
             'password' => Hash::make($request->phone),
             'is_payment' => ($request->status) ? 1 : 0,
         ]);
+
+        // begin - id_code generatsiya
+        $filial_id = '01';
+        $this->service->createIdCode($student,$filial_id);
+        // end - id_code generatsiya
+        
         $student->assignRole([$role->id]);
         if ($request->event_id) {
             EventUser::create([

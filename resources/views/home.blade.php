@@ -10,5 +10,8 @@
         @endif
 
         {{ __('You are logged in!') }}
+
+        
+        @livewire('user-find')
     </div>
 @endsection
